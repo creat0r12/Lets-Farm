@@ -27,19 +27,13 @@ body {
   min-width: 320px;
   min-height: 100vh;
   /* timepass */
-  background-image: url("./assets/bg2.jpg");
+  /* background-image: url("./assets/bg2.jpg");
   background-size: cover;
-  /* background-repeat: no-repeat; */
-  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-attachment: fixed; */
 
   /* background-position: center; */
 /* timepass */
-}
-
-.navbtn{
- display: flex;
- margin-top: 100px;
- position: fixed;
 }
 
 

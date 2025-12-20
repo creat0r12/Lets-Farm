@@ -10,7 +10,6 @@ import TopPanel from "./components/TopPanel";
 function App() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
-  const [closednav , opennav] = useState(false);
 
   const handleNavSelect = (section: string) => {
     if (section === "home") {
@@ -22,16 +21,9 @@ function App() {
     }
   };
 
-  const handlclick = ()=>{
-    opennav(!closednav)
-  }
-
   return (
-    <>{closednav&&
-      (  <Navbar onSelect={handleNavSelect} />
-    )}
-      
-      <button className="navbtn" onClick={handlclick}>Open nav</button>
+    <>
+      <Navbar onSelect={handleNavSelect} />
 
       <Hero />
       <WhyFarming />
