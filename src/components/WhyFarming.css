@@ -1,0 +1,17 @@
+.why-farming {
+  padding: 80px 60px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.why-farming h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.why-farming p {
+  font-size: 18px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  color: #d1d5db;
+}

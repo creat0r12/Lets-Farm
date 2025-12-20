@@ -1,0 +1,39 @@
+.top-panel {
+  position: fixed;
+  top: 70px; /* height of navbar */
+  left: 0;
+  width: 100%;
+  height: calc(60vh - 64px);
+  background: rgba(63, 63, 62, 0.536);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1000;
+
+  /* keep panel visible and stable */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* header */
+.top-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.top-panel-header h2 {
+  font-size: 28px;
+}
+
+.top-panel-header button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* content */
+.top-panel-content {
+  padding: 40px;
+}

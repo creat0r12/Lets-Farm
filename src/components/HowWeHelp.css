@@ -1,0 +1,55 @@
+.how-we-help {
+  padding: 80px 60px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.how-we-help h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.help-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.help-item h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.help-item p {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #d1d5db;
+}
+
+.help-item {
+  max-width: 420px;
+}
+@media (max-width: 768px) {
+  .how-we-help {
+    padding: 60px 20px;
+  }
+
+  .help-list {
+    grid-template-columns: 1fr;
+  }
+
+  .how-we-help h2 {
+    font-size: 28px;
+  }
+
+  .help-item h3 {
+    font-size: 20px;
+  }
+
+  .help-item p {
+    font-size: 16px;
+  }
+
+ 
+
+}
