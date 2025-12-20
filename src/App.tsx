@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import WhyFarming from "./components/WhyFarming";
@@ -6,6 +8,7 @@ import Vision from "./components/Vision";
 import HowWeHelp from "./components/HowWeHelp";
 import Challenges from "./components/Challenges";
 import TopPanel from "./components/TopPanel";
+import Learning from "./components/Learning";
 
 function App() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -25,12 +28,27 @@ function App() {
     <>
       <Navbar onSelect={handleNavSelect} />
 
-      <Hero />
-      <WhyFarming />
-      <Vision />
-      <HowWeHelp />
-      <Challenges />
+      {/* PAGE ROUTES */}
+      <Routes>
+        {/* HOME PAGE */}
+        <Route
+          path="/"
+          element={
+            <>
+              <Hero />
+              <WhyFarming />
+              <Vision />
+              <HowWeHelp />
+              <Challenges />
+            </>
+          }
+        />
 
+        {/* LEARNING PAGE */}
+        <Route path="/learning" element={<Learning />} />
+      </Routes>
+
+      {/* OVERLAY PANEL (NOT A PAGE) */}
       <TopPanel
         isOpen={isPanelOpen}
         onClose={() => setIsPanelOpen(false)}

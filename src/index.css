@@ -27,10 +27,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   /* timepass */
-  /* background-image: url("./assets/bg2.jpg");
+  background-image: url("./assets/bg2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed; */
+  background-attachment: fixed;
 
   /* background-position: center; */
 /* timepass */
@@ -61,6 +61,13 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+
 
 @media (prefers-color-scheme: light) {
   :root {
