@@ -8,6 +8,8 @@ import LearningCrop from "./LearningCrop";
 import LearningMethods from "./LearningMethods";
 import LearningRegion from "./LearningRegion";
 import GuidedCTA from "./GuidedCTA";
+// import LearningBox from "./LearningBox";
+
 
 function GuidedLearning() {
 
@@ -42,6 +44,7 @@ function GuidedLearning() {
       <LearningCrop />
       <LearningMethods />
       <LearningRegion />
+      {/* <LearningBox /> */}
 
       <GuidedCTA
   onStart={() => {
@@ -61,7 +64,7 @@ function GuidedLearning() {
       {/* ========================= */}
 
       {startGuide && (
-  <div id="learning-path">
+  <div   id="learning-path">
 
     <h1>Guided Farming Journey</h1>
     <p>
@@ -159,6 +162,7 @@ function GuidedLearning() {
             </>
           )}
 
+
           {/* STEP 4: FARMING METHOD */}
           {soil && (
             <>
@@ -194,11 +198,35 @@ function GuidedLearning() {
             </>
           )}
 
+          {/* STEP 5: SUMMARY */}
+{method && (
+  <>
+    <hr style={{ margin: "2rem 0" }} />
+    <h2>Summary</h2>
+
+    <p><b>State:</b> {state}</p>
+    {city && <p><b>City:</b> {city}</p>}
+    <p><b>Soil Type:</b> {soil}</p>
+    <p><b>Farming Method:</b> {method}</p>
+
+    <p style={{ marginTop: "1rem", color: "#2e7d32", fontWeight: 500 }}>
+      ✅ Based on your inputs, we’ll guide you step by step.
+    </p>
+    <p style={{ marginTop: "1rem", fontSize: "14px", color: "#777" }}>
+  🔒 You can restart the guide anytime to change selections.
+</p>
+
+  </>
+)}
+
+
         </div>
       )}
     </div>
   );
+  
 }
+
 
 export default GuidedLearning;
 

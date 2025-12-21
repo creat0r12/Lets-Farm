@@ -22,8 +22,7 @@ function LearningRegion() {
       </p>
 
       <p style={{ opacity: 0.8 }}>
-        🚧 <b>Coming Soon:</b> Select your region and get tailored farming
-        guidance.
+        🚧 <b>Coming Soon:</b> AI-powered, region-specific farming recommendations
       </p>
      </div>
      
