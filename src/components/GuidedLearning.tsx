@@ -1,5 +1,13 @@
 import { useState } from "react";
 import "./GuidedLearning.css";
+import LearningWhy from "./LearningWhy";
+import LearningBasics from "./LearningBasics";
+import LearningSoil from "./LearningSoil";
+import LearningCrop from "./LearningCrop";
+import LearningMethods from "./LearningMethods";
+import LearningRegion from "./LearningRegion";
+
+
 
 
 function Learning() {
@@ -9,10 +17,21 @@ function Learning() {
   const [soil, setSoil] = useState("");
   const [method, setMethod] = useState("organic"); // default
 
+
+
+
+
   return (
     <div className="guided-learning">
 
-      
+      {/* SECTION 1: WHY LEARN FARMING */}
+      <LearningWhy />
+      <LearningBasics />
+      <LearningSoil />
+      <LearningCrop />
+      <LearningMethods />
+      <LearningRegion />
+
       {/* INTRO */}
       <h1>Learning Farming</h1>
       <p>
