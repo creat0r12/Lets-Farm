@@ -1,0 +1,163 @@
+.home-slider {
+  position: relative;
+  width: 100%;
+  margin: 3rem 0;
+  padding: 0 ;   /* 👈 controls side gap */
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+
+/* MAIN GLASS STRIP */
+.slider-window {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+
+    height: 500px;
+    /* ✅ FIXED HEIGHT */
+
+    padding: 2rem 5rem;
+
+    background: rgba(255, 255, 255, 0.527);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    border-radius: 0;
+    box-shadow: 0 18px 40px  rgba(255, 255, 255, 0.521);
+
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+
+.slider-track {
+    display: flex;
+    transition: transform 0.4s ease;
+}
+
+.slide {
+    min-width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.slide h2 {
+    color: #1f7a3f;
+    margin-bottom: 0.8rem;
+}
+
+.slide p {
+    color: #413c3c;
+    line-height: 1.6;
+}
+
+/* ========== ARROWS (FINAL, CLEAN) ========== */
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    padding: 56px 38px;
+    /* big tap area */
+    cursor: pointer;
+    z-index: 3;
+}
+
+.nav-btn span {
+    font-size: 2rem;
+    color: #2f8f46;
+}
+
+/* positions */
+.nav-btn.left {
+    left: 20px;
+}
+
+.nav-btn.right {
+    right: 20px;
+}
+
+/* remove browser box */
+.nav-btn:focus,
+.nav-btn:active {
+    outline: none;
+    box-shadow: none;
+}
+
+/* glow on click only */
+.nav-btn:active span {
+    text-shadow: 0 0 8px rgba(48, 152, 73, 0.8);
+}
+
+/* ========== DOTS ========== */
+
+.slider-dots {
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(47, 143, 70, 0.35);
+    cursor: pointer;
+}
+
+.dot.active {
+    background: #2f8f46;
+}
+
+/* MOBILE SAFE */
+@media (max-width: 768px) {
+
+    .slider-window {
+        width: 100%;
+        height: 400px;
+        /* smaller for mobile */
+        padding: 1.2rem 1.5rem;
+        border-radius:0;
+    }
+
+    .slide {
+        padding: 0 0.5rem;
+    }
+
+    .slide h2 {
+        font-size: 1.2rem;
+    }
+
+    .slide p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+
+    /* arrows closer & smaller */
+    .nav-btn.left {
+        left: 8px;
+    }
+
+    .nav-btn.right {
+        right: 8px;
+    }
+
+    .nav-btn span {
+        font-size: 1.6rem;
+    }
+
+    /* dots slightly higher */
+    .slider-dots {
+        bottom: 10px;
+    }
+}

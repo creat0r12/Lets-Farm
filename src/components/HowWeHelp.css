@@ -23,12 +23,25 @@
 .help-item p {
   font-size: 17px;
   line-height: 1.7;
-  color: #d1d5db;
+  color: #3f4e64;
 }
 
 .help-item {
   max-width: 420px;
 }
+
+
+/* for box content  */
+section {
+  margin: 0;
+}
+
+p {
+  max-width: 800px;
+}
+/* for box content */
+
+/* for mobile view */
 @media (max-width: 768px) {
   .how-we-help {
     padding: 60px 20px;
@@ -53,3 +66,4 @@
  
 
 }
+/* for mobile view */
