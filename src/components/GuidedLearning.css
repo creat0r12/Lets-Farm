@@ -1,7 +1,13 @@
+/* =========================
+   GUIDED LEARNING BASE
+========================= */
+
 .guided-learning {
-  padding: 4rem;
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 1100px;
+  margin: auto;
+  padding: 2rem 1.2rem;
+  line-height: 1.6;
+  color: #ddd;
 }
 
 .guided-learning h1 {
@@ -9,96 +15,104 @@
   margin-bottom: 0.5rem;
 }
 
-.guided-learning p {
-  color: #444;
-  line-height: 1.6;
-}
-
 .guided-learning h2 {
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
   color: #1f7a3f;
 }
 
-.guided-learning hr {
-  margin: 2rem 0;
-  border: none;
-  border-top: 1px solid #ddd;
+.guided-learning p {
+  color: #cfcfcf;
+  line-height: 1.7;
 }
 
-.guided-learning label {
-  display: block;
-  margin-bottom: 1rem;
-}
+/* =========================
+   LEARNING STACK (IMPORTANT)
+========================= */
 
-.guided-learning select,
-.guided-learning input[type="text"] {
-  margin-top: 0.4rem;
-  padding: 0.5rem;
-  width: 100%;
-  max-width: 300px;
-}
-
-.guided-learning button {
-  margin-top: 0.5rem;
-  background: #2f8f46;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.guided-learning button:hover {
-  background: #256f38;
-}
-
-/* Radio buttons spacing */
-.guided-learning input[type="radio"] {
-  margin-right: 0.4rem;
-}
-
-/* GuidedCTA.tsx */
-.guided-cta {
+.learning-stack {
+  position: relative;
   margin-top: 4rem;
-  padding: 3rem 1.5rem;
+}
+
+/* =========================
+   LEARNING BOX (APP CARD)
+========================= */
+
+.learning-box {
+  position: relative;
+
+  max-width: 1000px;
+  margin: 0 auto 8rem;
+
+  padding: 2.8rem 3rem;
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+
+  transition: transform 0.35s ease;
+}
+
+/* =========================
+   OVERLAP EFFECT (CORE)
+========================= */
+
+.learning-box:not(:first-child) {
+  margin-top: -220px;   /* overlap amount */
+}
+
+/* =========================
+   STACK ORDER (CRITICAL)
+========================= */
+
+.learning-box:nth-child(1) { z-index: 1; }
+.learning-box:nth-child(2) { z-index: 2; }
+.learning-box:nth-child(3) { z-index: 3; }
+.learning-box:nth-child(4) { z-index: 4; }
+.learning-box:nth-child(5) { z-index: 5; }
+.learning-box:nth-child(6) { z-index: 6; }
+
+/* =========================
+   CTA SECTION
+========================= */
+
+.guided-cta {
+  margin-top: 5rem;
+  padding: 3.5rem 1.5rem;
   text-align: center;
   background: rgba(47, 143, 70, 0.08);
+  border-radius: 18px;
 }
 
 .guided-cta h2 {
-  color: #2f8f46;
-  margin-bottom: 1rem;
-}
-
-.guided-cta p {
-  max-width: 600px;
-  margin: 0 auto 1.5rem;
-  line-height: 1.6;
+  color: #2fd176;
 }
 
 .guided-btn {
-  display: inline-block;
   background: #2f8f46;
-  color: #fff;
-  padding: 0.8rem 1.6rem;
-  border-radius: 6px;
-  text-decoration: none;
-  font-weight: 500;
+  color: white;
+  padding: 0.9rem 1.8rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
 }
 
 .guided-btn:hover {
-  background: #256f3a;
+  background: #256f38;
 }
 
-/* GuidedCTA.tsx */
+/* =========================
+   PROGRESS BAR
+========================= */
 
-/* progress bar of location */
 .progress-bar {
   width: 100%;
   height: 8px;
-  background: #e0e0e0;
+  background: #333;
   border-radius: 4px;
   margin-bottom: 2rem;
 }
@@ -109,12 +123,17 @@
   border-radius: 4px;
   transition: width 0.4s ease;
 }
-/* progress bar of location */
 
+/* =========================
+   MOBILE TUNING
+========================= */
 
-/* Mobile safe (not mobile-first) */
 @media (max-width: 768px) {
-  .guided-learning {
-    padding: 2rem 1.5rem;
+  .learning-box {
+    padding: 1.6rem;
+  }
+
+  .learning-box:not(:first-child) {
+    margin-top: -140px;
   }
 }

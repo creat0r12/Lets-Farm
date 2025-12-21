@@ -1,6 +1,9 @@
 function LearningCrop() {
   return (
     <section id="crop" className="learning-section">
+     
+     <div className="learning-box">
+
       <h2>Crop Selection</h2>
 
       <p>
@@ -43,6 +46,8 @@ function LearningCrop() {
         In the next steps, you will learn how to match crops with your specific
         location and soil.
       </p>
+     </div>
+     
     </section>
   );
 }

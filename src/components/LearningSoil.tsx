@@ -1,6 +1,8 @@
 function LearningSoil() {
   return (
     <section id="soil" className="learning-section">
+      <div className="learning-box">
+
       <h2>Soil Understanding</h2>
 
       <p>
@@ -35,6 +37,7 @@ function LearningSoil() {
         You don’t need a lab test to start. Even basic observation of color,
         hardness, and water retention gives useful information.
       </p>
+      </div>
     </section>
   );
 }

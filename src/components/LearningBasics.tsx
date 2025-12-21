@@ -1,6 +1,9 @@
 function LearningBasics() {
   return (
-    <section id="basics" className="learning-section">
+   <section id="basics" className="learning-section">
+   
+   <div className="learning-box">
+
       <h2>Farming Basics</h2>
 
       <p>
@@ -28,6 +31,9 @@ function LearningBasics() {
         Once you understand the basics, choosing crops and methods becomes
         simpler and more logical.
       </p>
+   </div>
+
+   
     </section>
   );
 }

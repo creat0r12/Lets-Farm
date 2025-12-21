@@ -1,6 +1,8 @@
 function LearningWhy() {
   return (
     <section id="need" className="learning-section">
+
+<div className="learning-box">
       <h2>Why Learn Farming?</h2>
 
       <p>
@@ -26,6 +28,8 @@ function LearningWhy() {
         where your food comes from, learning the basics of farming is valuable
         for everyone.
       </p>
+</div>
+
     </section>
   );
 }

@@ -1,6 +1,9 @@
 function LearningRegion() {
   return (
     <section id="region" className="learning-section">
+     
+     <div className="learning-box">
+
       <h2>For Your Region</h2>
 
       <p>
@@ -22,6 +25,8 @@ function LearningRegion() {
         🚧 <b>Coming Soon:</b> Select your region and get tailored farming
         guidance.
       </p>
+     </div>
+     
     </section>
   );
 }

@@ -1,6 +1,8 @@
 function LearningMethods() {
   return (
     <section id="method" className="learning-section">
+     <div className="learning-box">
+
       <h2>Farming Methods</h2>
 
       <p>
@@ -36,6 +38,8 @@ function LearningMethods() {
         In guided learning, we will help you choose the right method based on
         your land, goals, and experience.
       </p>
+     </div>
+     
     </section>
   );
 }
