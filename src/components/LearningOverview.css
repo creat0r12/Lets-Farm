@@ -1,0 +1,59 @@
+.learning-overview {
+  padding: 4rem 6rem;
+  background: #f7fbf7;
+}
+
+.learning-overview h2 {
+  font-size: 2.2rem;
+  color: #1f7a3f;
+  margin-bottom: 1rem;
+}
+
+.learning-intro {
+  max-width: 900px;
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.learning-jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 2rem;
+}
+
+.learning-jump a {
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: #e6f4ea;
+  color: #1f7a3f;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.learning-jump a:hover {
+  background: #cfead8;
+}
+
+.learning-note {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* mobile safe */
+@media (max-width: 768px) {
+  .learning-overview {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .learning-overview h2 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .learning-jump {
+    justify-content: center;
+  }
+}

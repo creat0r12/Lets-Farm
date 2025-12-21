@@ -3,6 +3,11 @@
   max-width: 900px;
   margin: 0 auto;
   text-align: left;
+   min-height: calc(100vh - 64px);
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .hero h1 {
@@ -26,3 +31,24 @@
   border-radius: 6px;
   cursor: pointer;
 }
+
+
+
+/* for mobile */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 28px;   /* was too big */
+    line-height: 1.3;
+  }
+
+  .hero p {
+    font-size: 14px;
+    margin: 12px 0 20px;
+  }
+
+  .hero-btn {
+    width: fit-content;
+    align-self: center;
+  }
+}
+/* for mobile  */

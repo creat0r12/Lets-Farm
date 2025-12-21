@@ -8,7 +8,11 @@ import Vision from "./components/Vision";
 import HowWeHelp from "./components/HowWeHelp";
 import Challenges from "./components/Challenges";
 import TopPanel from "./components/TopPanel";
-import Learning from "./components/Learning";
+import GuidedLearning from "./components/GuidedLearning";
+import FarmingMethods from "./components/FarmingMethods";
+import LearningOverview from "./components/LearningOverview";
+
+
 
 function App() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -40,12 +44,24 @@ function App() {
               <Vision />
               <HowWeHelp />
               <Challenges />
+              <FarmingMethods />
+
+
             </>
           }
         />
 
         {/* LEARNING PAGE */}
-        <Route path="/learning" element={<Learning />} />
+        <Route
+          path="/learning"
+          element={
+            <>
+              <LearningOverview />
+              <GuidedLearning />
+            </>
+          }
+        />
+
       </Routes>
 
       {/* OVERLAY PANEL (NOT A PAGE) */}

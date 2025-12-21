@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "./GuidedLearning.css";
+
 
 function Learning() {
   // STEP STATES
@@ -8,7 +10,8 @@ function Learning() {
   const [method, setMethod] = useState("organic"); // default
 
   return (
-    <div style={{ padding: "4rem", maxWidth: "800px", margin: "0 auto" }}>
+    <div className="guided-learning">
+
       
       {/* INTRO */}
       <h1>Learning Farming</h1>

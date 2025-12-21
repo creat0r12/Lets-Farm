@@ -1,0 +1,57 @@
+.farming-methods {
+  padding: 80px 20px;
+  background: #f4f9f4;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 2.2rem;
+  color: #1f7a3f;
+  margin-bottom: 10px;
+}
+
+.section-subtitle {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  color: #555;
+  font-size: 1rem;
+}
+
+.methods-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.method-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 320px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+}
+
+.method-card:hover {
+  transform: translateY(-6px);
+}
+
+.method-card h3 {
+  color: #2f8f46;
+  margin-bottom: 10px;
+}
+
+.method-card p {
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.highlight {
+  border: 2px solid #2f8f46;
+}
+
+.highlight:hover {
+  box-shadow: 0 12px 30px rgba(47, 143, 70, 0.25);
+}
