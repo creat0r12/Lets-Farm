@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./GuidedLearning.css";
+
 import LearningWhy from "./LearningWhy";
 import LearningBasics from "./LearningBasics";
 import LearningSoil from "./LearningSoil";
@@ -8,140 +9,196 @@ import LearningMethods from "./LearningMethods";
 import LearningRegion from "./LearningRegion";
 import GuidedCTA from "./GuidedCTA";
 
+function GuidedLearning() {
 
+  // GUIDE CONTROL
+  const [startGuide, setStartGuide] = useState(false);
 
-
-function Learning() {
   // STEP STATES
   const [state, setState] = useState("");
   const [city, setCity] = useState("");
   const [soil, setSoil] = useState("");
-  const [method, setMethod] = useState("organic"); // default
+  const [method, setMethod] = useState("organic");
 
-
-
+  // STEP PROGRESS LOGIC
+  const getCurrentStep = () => {
+    if (!state) return 1;
+    if (state && !soil) return 2;
+    if (soil && !method) return 3;
+    return 4;
+  };
 
 
   return (
-    <div className="guided-learning">
+    <div id="guided-learning" className="guided-learning">
 
-      {/* SECTION 1: WHY LEARN FARMING */}
+      {/* ========================= */}
+      {/* PART 1: LEARNING CONTENT */}
+      {/* ========================= */}
+
       <LearningWhy />
       <LearningBasics />
       <LearningSoil />
       <LearningCrop />
       <LearningMethods />
       <LearningRegion />
-      <GuidedCTA />
 
-      {/* INTRO */}
-      <h1>Learning Farming</h1>
-      <p>
-        Farming depends on where you are, what soil you have, and which season it is.
-        Let’s learn this step by step — no prior knowledge needed.
-      </p>
+      <GuidedCTA
+  onStart={() => {
+    setStartGuide(true);
 
-      <hr style={{ margin: "2rem 0" }} />
+    setTimeout(() => {
+      document
+        .getElementById("learning-path")
+        ?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  }}
+/>
 
-      {/* STEP 1: LOCATION */}
-      <h2>Step 1: Location</h2>
 
-      <label>
-        Select State:
-        <br />
-        <select value={state} onChange={(e) => setState(e.target.value)}>
-          <option value="">-- Select State --</option>
-          <option value="Maharashtra">Maharashtra</option>
-          <option value="Gujarat">Gujarat</option>
-          <option value="Punjab">Punjab</option>
-        </select>
-      </label>
+      {/* ========================= */}
+      {/* PART 2: GUIDED JOURNEY */}
+      {/* ========================= */}
 
-      <br /><br />
+      {startGuide && (
+  <div id="learning-path">
 
-      <label>
-        City / Village (optional):
-        <br />
-        <input
-          type="text"
-          value={city}
-          onChange={(e) => setCity(e.target.value)}
-          placeholder="Enter city or village"
-        />
-      </label>
+    <h1>Guided Farming Journey</h1>
+    <p>
+      Answer a few questions and we’ll guide you step by step.
+      No prior farming knowledge required.
+    </p>
 
-      {/* STEP 2: SEASON & CLIMATE */}
-      {state && (
-        <>
-          <hr style={{ margin: "2rem 0" }} />
-          <h2>Step 2: Season & Climate</h2>
-          <p>
-            Based on your region, the current farming season is <b>Kharif</b>.
-          </p>
-          <p>Rainfall: Medium to High</p>
-          <p>Temperature: 25–35°C</p>
-        </>
-      )}
+    {/* 🔽 ADD THIS BLOCK HERE */}
+    <p style={{ marginBottom: "1rem", fontWeight: "bold" }}>
+      Step {getCurrentStep()} of 4
+    </p>
 
-      {/* STEP 3: SOIL TYPE */}
-      {state && (
-        <>
-          <hr style={{ margin: "2rem 0" }} />
-          <h2>Step 3: Soil Type</h2>
+    <div className="progress-bar">
+      <div
+        className="progress-fill"
+        style={{ width: `${(getCurrentStep() / 4) * 100}%` }}
+      />
+    </div>
+    {/* 🔼 END HERE */}
 
-          <select value={soil} onChange={(e) => setSoil(e.target.value)}>
-            <option value="">-- Select Soil Type --</option>
-            <option value="Black">Black Soil</option>
-            <option value="Red">Red Soil</option>
-            <option value="Alluvial">Alluvial Soil</option>
-          </select>
+    <hr style={{ margin: "2rem 0" }} />
 
-          <br /><br />
+        {/* STEP 1: LOCATION */}
+<h2>Step 1: Location</h2>
 
-          <button onClick={() => setSoil("Black")}>
-            I don’t know (Use common soil)
-          </button>
-        </>
-      )}
+<label>
+  Select State:
+  <br />
+  <select value={state} onChange={(e) => setState(e.target.value)}>
+    <option value="">-- Select State --</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Gujarat">Gujarat</option>
+    <option value="Punjab">Punjab</option>
+  </select>
+</label>
 
-      {/* STEP 4: FARMING METHOD */}
-      {soil && (
-        <>
-          <hr style={{ margin: "2rem 0" }} />
-          <h2>Step 4: Farming Method</h2>
+{/* SMART FEEDBACK */}
+{state && (
+  <p style={{ marginTop: "0.5rem", color: "#2e7d32", fontWeight: 500 }}>
+    ✅ Farming guidance will be personalized for <b>{state}</b>
+  </p>
+)}
 
-          <label>
-            <input
-              type="radio"
-              value="organic"
-              checked={method === "organic"}
-              onChange={() => setMethod("organic")}
-            />
-            🌿 Organic Farming (Recommended)
-          </label>
+<br />
 
-          <br />
+<label>
+  City / Village (optional):
+  <br />
+  <input
+    type="text"
+    value={city}
+    onChange={(e) => setCity(e.target.value)}
+    placeholder="Enter city or village"
+  />
+</label>
 
-          <label>
-            <input
-              type="radio"
-              value="inorganic"
-              checked={method === "inorganic"}
-              onChange={() => setMethod("inorganic")}
-            />
-            🧪 Inorganic Farming
-          </label>
+{city && (
+  <p style={{ marginTop: "0.5rem", color: "#1565c0" }}>
+    📍 Local insights will be adjusted for <b>{city}</b>
+  </p>
+)}
 
-          <p style={{ marginTop: "1rem" }}>
-            <b>Selected method:</b>{" "}
-            {method === "organic"
-              ? "Organic farming is safer and better for beginners."
-              : "Inorganic farming gives faster results but needs experience."}
-          </p>
-        </>
+
+          {/* STEP 2: SEASON */}
+          {state && (
+            <>
+              <hr style={{ margin: "2rem 0" }} />
+              <h2>Step 2: Season & Climate</h2>
+              <p>
+                Based on <b>{state}</b>, current farming season is <b>Kharif</b>.
+              </p>
+              <p>Rainfall: Medium to High</p>
+              <p>Temperature: 25–35°C</p>
+            </>
+          )}
+
+          {/* STEP 3: SOIL */}
+          {state && (
+            <>
+              <hr style={{ margin: "2rem 0" }} />
+              <h2>Step 3: Soil Type</h2>
+
+              <select value={soil} onChange={(e) => setSoil(e.target.value)}>
+                <option value="">-- Select Soil Type --</option>
+                <option value="Black">Black Soil</option>
+                <option value="Red">Red Soil</option>
+                <option value="Alluvial">Alluvial Soil</option>
+              </select>
+
+              <br /><br />
+
+              <button onClick={() => setSoil("Black")}>
+                I don’t know (Use common soil)
+              </button>
+            </>
+          )}
+
+          {/* STEP 4: FARMING METHOD */}
+          {soil && (
+            <>
+              <hr style={{ margin: "2rem 0" }} />
+              <h2>Step 4: Farming Method</h2>
+
+              <label>
+                <input
+                  type="radio"
+                  checked={method === "organic"}
+                  onChange={() => setMethod("organic")}
+                />
+                🌿 Organic Farming (Recommended)
+              </label>
+
+              <br />
+
+              <label>
+                <input
+                  type="radio"
+                  checked={method === "inorganic"}
+                  onChange={() => setMethod("inorganic")}
+                />
+                🧪 Inorganic Farming
+              </label>
+
+              <p style={{ marginTop: "1rem" }}>
+                <b>Selected method:</b>{" "}
+                {method === "organic"
+                  ? "Organic farming is safer, sustainable, and ideal for beginners."
+                  : "Inorganic farming gives faster results but needs experience."}
+              </p>
+            </>
+          )}
+
+        </div>
       )}
     </div>
   );
 }
 
-export default Learning;
+export default GuidedLearning;
+

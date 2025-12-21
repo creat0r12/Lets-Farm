@@ -44,6 +44,7 @@ function App() {
               <HomeSlider />
               <Challenges />
               <FarmingMethods />
+              
 
 
 
