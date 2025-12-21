@@ -59,6 +59,42 @@
   margin-right: 0.4rem;
 }
 
+/* GuidedCTA.tsx */
+.guided-cta {
+  margin-top: 4rem;
+  padding: 3rem 1.5rem;
+  text-align: center;
+  background: rgba(47, 143, 70, 0.08);
+}
+
+.guided-cta h2 {
+  color: #2f8f46;
+  margin-bottom: 1rem;
+}
+
+.guided-cta p {
+  max-width: 600px;
+  margin: 0 auto 1.5rem;
+  line-height: 1.6;
+}
+
+.guided-btn {
+  display: inline-block;
+  background: #2f8f46;
+  color: #fff;
+  padding: 0.8rem 1.6rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.guided-btn:hover {
+  background: #256f3a;
+}
+
+/* GuidedCTA.tsx */
+
+
 /* Mobile safe (not mobile-first) */
 @media (max-width: 768px) {
   .guided-learning {

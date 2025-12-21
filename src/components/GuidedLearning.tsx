@@ -6,6 +6,7 @@ import LearningSoil from "./LearningSoil";
 import LearningCrop from "./LearningCrop";
 import LearningMethods from "./LearningMethods";
 import LearningRegion from "./LearningRegion";
+import GuidedCTA from "./GuidedCTA";
 
 
 
@@ -31,6 +32,7 @@ function Learning() {
       <LearningCrop />
       <LearningMethods />
       <LearningRegion />
+      <GuidedCTA />
 
       {/* INTRO */}
       <h1>Learning Farming</h1>
