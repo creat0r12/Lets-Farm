@@ -6,7 +6,7 @@
   align-items: center;
 
   padding: 0 20px;             /* MOBILE SAFE */
-  background-color: #1b1f12b9;
+  background-color: #d7ffff07;
   color: white;
   box-sizing: border-box;
 
@@ -25,19 +25,83 @@
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 28px;
+  align-items: center;
+
+  gap: 22px;                 /* balanced spacing */
   margin: 0;
   padding: 0;
-  font-size: 16px;
+
+  font-size: 17px;           /* slightly enlarged */
+  font-weight: 500;
+  letter-spacing: 0.4px;
 }
+
+
 
 
 .nav-links li {
+  position: relative;
   cursor: pointer;
+  padding: 6px 6px;
+
+color: rgba(255, 255, 255, 0.92);
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 0.4px;
+
+  transition:
+    color 0.25s ease,
+    text-shadow 0.25s ease,
+    transform 0.2s ease;
 }
 
+/* underline */
+.nav-links li::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #22c55e, #4ade80);
+  border-radius: 2px;
+
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+
+
+/* hover */
 .nav-links li:hover {
-    color: #22c55e;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.nav-links li:hover::after {
+  width: 100%;
+}
+
+.nav-links li:hover::after {
+  width: 100%;
+}
+
+
+
+/* =========================
+ACTIVE TAB (MAIN FEATURE)
+========================= */
+.nav-links li.active {
+  color: #ffffff;               /* keep text white */
+  font-weight: 600;
+
+  text-shadow:
+    0 0 6px rgba(255, 255, 255, 0.6); /* soft glow, readable */
+}
+
+.nav-links li.active::after {
+  width: 100%;
+  background: linear-gradient(90deg, #22c55e, #4ade80); /* green stays here */
 }
 
 .navbar-blur {
@@ -45,6 +109,24 @@
   opacity: 0.6;
   pointer-events: none;
 }
+
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+
+
+/* =========================
+NAVBAR + TOP PANEL BLEND
+========================= */
+.navbar.navbar-panel-open {
+  background: rgba(63, 63, 62, 0.536); /* SAME as TopPanel */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  transition: background-color 0.s ease;
+}
+
 
 @media (max-width: 768px) {
   .navbar {
@@ -55,8 +137,9 @@
     font-size: 16px;
   }
 
-  .nav-links {
+   .nav-links {
     gap: 14px;
-    font-size: 13px;
+    font-size: 14px;
+    letter-spacing: 0.3px;
   }
 }

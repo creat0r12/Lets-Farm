@@ -1,21 +1,29 @@
 .top-panel {
   position: fixed;
-  top: 64px; /* height of navbar */
+  top: 64px; /* navbar height */
   left: 0;
   width: 100%;
   height: calc(60vh - 64px);
+
   background: rgba(63, 63, 62, 0.536);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
+
   z-index: 1000;
 
-/* CLOSED state */
-opacity: 0;
-transform: translateY(-20px);
-pointer-events: none;
-transition: opacity 0.3s ease, transform 0.3s ease;
+  /* CLOSED STATE */
+  opacity: 0;
+  transform: translateY(-12px);
+  pointer-events: none;
 
+  
+
+  transition:
+   opacity 0.4s ease,
+  transform 0.4s ease;
+    
 }
+
 
 .top-panel.open {
   opacity: 1;

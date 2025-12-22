@@ -3,17 +3,12 @@ import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-// import WhyFarming from "./components/WhyFarming";
-// import Vision from "./components/Vision";
-// import HowWeHelp from "./components/HowWeHelp";
 import Challenges from "./components/Challenges";
 import TopPanel from "./components/TopPanel";
 import GuidedLearning from "./components/GuidedLearning";
 import FarmingMethods from "./components/FarmingMethods";
 import LearningOverview from "./components/LearningOverview";
 import HomeSlider from "./components/HomeSlider";
-
-
 
 function App() {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -31,7 +26,11 @@ function App() {
 
   return (
     <>
-      <Navbar onSelect={handleNavSelect} />
+      {/* NAVBAR */}
+      <Navbar
+        onSelect={handleNavSelect}
+        isTopPanelOpen={isPanelOpen}  
+      />
 
       {/* PAGE ROUTES */}
       <Routes>
@@ -44,10 +43,6 @@ function App() {
               <HomeSlider />
               <Challenges />
               <FarmingMethods />
-              
-
-
-
             </>
           }
         />
@@ -62,14 +57,13 @@ function App() {
             </>
           }
         />
-
       </Routes>
 
-      {/* OVERLAY PANEL (NOT A PAGE) */}
+      {/* TOP OVERLAY PANEL */}
       <TopPanel
         isOpen={isPanelOpen}
         onClose={() => setIsPanelOpen(false)}
-        title={activeSection.toUpperCase()}
+        title={activeSection ? activeSection.toUpperCase() : ""}
       >
         {activeSection === "why" && (
           <p>

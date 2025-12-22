@@ -1,20 +1,27 @@
 .hero {
-  padding: 80px 60px;
-  max-width: 900px;
-  margin: 0 auto;
+  margin-left: 61px;
+  width: 700px;
+
+  min-height: calc(100vh - 64px);
+
+  padding: 1rem 1rem 2rem;
   text-align: left;
-   min-height: calc(100vh - 64px);
-  padding: 1.5rem 1rem;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  transform: translateY(-40px); /* keep vertical balance */
 }
 
+/* MAIN HEADING — clean, no glow */
 .hero h1 {
   font-size: 48px;
   margin-bottom: 20px;
+  color: #ffffff;
 }
 
+/* PARAGRAPH — readable & calm */
 .hero p {
   font-size: 18px;
   line-height: 1.6;
@@ -22,22 +29,32 @@
   color: #d1d5db;
 }
 
+/* BUTTON — simple & clear */
 .hero button {
   padding: 12px 24px;
   font-size: 16px;
-  background-color: #22c75e;
+  background-color: #22c55e;
   color: #000000;
   border: none;
   border-radius: 6px;
   cursor: pointer;
 }
 
+/* DIVIDER — simple thin line, no glow */
+.hero-divider {
+  width: 560px;
+  max-width: 90%;
+  height: 1px;
+  margin: 1.4rem 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
 
 
 /* for mobile */
-@media (max-width: 768px) {
+/* @media (max-width: 768px) {
   .hero h1 {
-    font-size: 28px;   /* was too big */
+    font-size: 28px;  
     line-height: 1.3;
   }
 
@@ -50,5 +67,5 @@
     width: fit-content;
     align-self: center;
   }
-}
+} */
 /* for mobile  */
