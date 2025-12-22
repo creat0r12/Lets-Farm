@@ -1,45 +1,154 @@
+
+/* =========================
+SECTION (FIXED BACKGROUND)
+========================= */
 .farming-methods {
-  padding: 80px 20px;
-  background: #f4f9f4;
+  position: relative;
+  padding: 5rem 2rem;
   text-align: center;
+
+  /* FIXED BACKGROUND */
+  background-image: url("../assets/organic.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* ✅ KEY LINE */
+
+  /* keeps content readable */
+  overflow: hidden;
 }
 
+
+/* overlay for readability */
+.farming-methods::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.507);
+  z-index: 0;
+}
+
+.farming-methods > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+TITLE & SUBTITLE
+========================= */
 .section-title {
   font-size: 2.2rem;
-  color: #1f7a3f;
-  margin-bottom: 10px;
+  color: #1f6b3f;
+  margin-bottom: 0.6rem;
 }
 
 .section-subtitle {
-  max-width: 700px;
-  margin: 0 auto 50px;
-  color: #555;
-  font-size: 1rem;
+  max-width: 760px;
+  margin: 0 auto 3rem;
+  color: #444;
+  font-size: 1.05rem;
+  line-height: 1.6;
 }
 
+/* =========================
+CARDS CONTAINER
+========================= */
 .methods-container {
   display: flex;
-  gap: 20px;
+  gap: 2rem;
   justify-content: center;
   flex-wrap: wrap;
 }
 
+/* =========================
+CARD
+========================= */
 .method-card {
+  width: 280px;
   background: #ffffff;
-  padding: 25px;
-  border-radius: 12px;
-  max-width: 320px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
+  border-radius: 18px;
+  padding: 1.6rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  text-align: center;
+
+  transition: 
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
+/* lift card */
 .method-card:hover {
-  transform: translateY(-6px);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
 }
 
+/* image zoom */
+.method-card .method-image {
+  overflow: hidden;
+}
+
+.method-card .method-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(47, 143, 70, 0.15);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.method-card:hover .method-image::after {
+  opacity: 1;
+}
+
+/* highlighted card (organic) */
+.method-card.highlight {
+  border: 2px solid #2f8f46;
+}
+
+/* =========================
+HIGHLIGHT CARD EXTRA GLOW
+========================= */
+.method-card.highlight:hover {
+  box-shadow:
+    0 24px 55px rgba(47, 143, 70, 0.35);
+}
+
+/* =========================
+IMAGE PLACEHOLDER
+========================= */
+.method-image {
+   position: relative; /* ✅ REQUIRED */
+  width: 100%;
+  height: 140px;
+  margin-bottom: 1rem;
+  border-radius: 14px;
+
+  background: rgba(47, 143, 70, 0.15);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.method-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.method-card:hover .method-image img {
+  transform: scale(1.08);
+}
+
+
+/* =========================
+TEXT
+========================= */
 .method-card h3 {
   color: #2f8f46;
-  margin-bottom: 10px;
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
 }
 
 .method-card p {
@@ -48,10 +157,20 @@
   line-height: 1.6;
 }
 
-.highlight {
-  border: 2px solid #2f8f46;
-}
+/* =========================
+MOBILE
+========================= */
+@media (max-width: 768px) {
+  .farming-methods {
+    padding: 4rem 1.2rem;
+  }
 
-.highlight:hover {
-  box-shadow: 0 12px 30px rgba(47, 143, 70, 0.25);
+  .section-title {
+    font-size: 1.9rem;
+  }
+
+  .method-card {
+    width: 100%;
+    max-width: 320px;
+  }
 }

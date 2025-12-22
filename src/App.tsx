@@ -26,45 +26,48 @@ function App() {
 
   return (
     <>
-      {/* NAVBAR */}
-      <Navbar
-        onSelect={handleNavSelect}
-        isTopPanelOpen={isPanelOpen}  
-      />
+  {/* FIXED WALLPAPER */}
+  <div className="fixed-wallpaper" />
 
-      {/* PAGE ROUTES */}
-      <Routes>
-        {/* HOME PAGE */}
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
-              <HomeSlider />
-              <Challenges />
-              <FarmingMethods />
-            </>
-          }
-        />
+  {/* NAVBAR */}
+  <Navbar
+    onSelect={handleNavSelect}
+    isTopPanelOpen={isPanelOpen}
+  />
 
-        {/* LEARNING PAGE */}
-        <Route
-          path="/learning"
-          element={
-            <>
-              <LearningOverview />
-              <GuidedLearning />
-            </>
-          }
-        />
-      </Routes>
+  {/* PAGE ROUTES */}
+  <Routes>
+    {/* HOME PAGE */}
+    <Route
+      path="/"
+      element={
+        <>
+          <Hero />
+          <HomeSlider />
+          <Challenges />
+          <FarmingMethods />
+        </>
+      }
+    />
 
-      {/* TOP OVERLAY PANEL */}
-      <TopPanel
-        isOpen={isPanelOpen}
-        onClose={() => setIsPanelOpen(false)}
-        title={activeSection ? activeSection.toUpperCase() : ""}
-      >
+    {/* LEARNING PAGE */}
+    <Route
+      path="/learning"
+      element={
+        <>
+          <LearningOverview />
+          <GuidedLearning />
+        </>
+      }
+    />
+  </Routes>
+
+  {/* TOP PANEL */}
+  <TopPanel
+    isOpen={isPanelOpen}
+    onClose={() => setIsPanelOpen(false)}
+    title={activeSection ? activeSection.toUpperCase() : ""}
+  >
         {activeSection === "why" && (
           <p>
             Agriculture is the backbone of our society, yet it is becoming

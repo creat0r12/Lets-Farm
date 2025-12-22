@@ -1,3 +1,6 @@
+/* =========================
+ROOT
+========================= */
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -5,7 +8,6 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -13,51 +15,80 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* links */
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-/* base body */
+/* =========================
+BASE BODY
+========================= */
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
   padding-top: 64px; /* navbar height */
-  /* timepass  */
-  background-image: url("./assets/bg2.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed; 
-
-  /* background-position: center; */
- /* timepass */
+  background: transparent;
 }
 
-/* prevent layout shift due to scrollbar */
+/* =========================
+FIXED FULLSCREEN WALLPAPER
+========================= */
+.fixed-wallpaper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  background-image: url("./assets/bg2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  z-index: -1;
+}
+
+/* =========================
+SECTIONS
+========================= */
+.challenges,
+.farming-methods {
+  background: #f7faf7;
+}
+
+/* =========================
+HTML SCROLL STABILITY
+========================= */
 html {
   overflow-y: scroll;
   scrollbar-gutter: stable;
 }
 
-/* headings */
+/* =========================
+TEXT
+========================= */
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
 
-/* paragraphs */
 p {
   font-size: 1rem;
   line-height: 1.6;
 }
 
-/* buttons */
+/* =========================
+LINKS
+========================= */
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+
+a:hover {
+  color: #535bf2;
+}
+
+/* =========================
+BUTTONS
+========================= */
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -79,7 +110,9 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-/* light mode */
+/* =========================
+LIGHT MODE
+========================= */
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
@@ -95,15 +128,14 @@ button:focus-visible {
   }
 }
 
-/* ========================= */
-/* MOBILE OPTIMIZATION */
-/* ========================= */
+/* =========================
+MOBILE
+========================= */
 @media (max-width: 768px) {
   body {
     overflow-x: hidden;
   }
 
-  /* headings resize */
   h1 {
     font-size: 1.8rem;
     line-height: 1.3;
@@ -120,17 +152,14 @@ button:focus-visible {
     text-align: center;
   }
 
-  /* text */
   p {
     font-size: 0.9rem;
   }
 
-  /* sections spacing */
   section {
     padding: 2rem 1rem;
   }
 
-  /* buttons for thumb */
   button {
     font-size: 0.95rem;
     padding: 0.7em 1.4em;

@@ -11,7 +11,9 @@
   flex-direction: column;
   justify-content: center;
 
-  transform: translateY(-40px); /* keep vertical balance */
+  transform: translateY(-100px); /* keep vertical balance */
+
+   background: transparent;
 }
 
 /* MAIN HEADING — clean, no glow */
