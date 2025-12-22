@@ -1,35 +1,129 @@
+/* =========================
+SECTION
+========================= */
 .challenges {
-  padding: 80px 60px;
-  max-width: 900px;
-  margin: auto;
+  padding: 5rem 2rem;
+  text-align: center;
+  position: relative;
 }
 
+/* Light overlay for readability */
+.challenges::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.65);
+  z-index: 0;
+}
+
+.challenges > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+HEADING & INTRO
+========================= */
 .challenges h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
+  font-size: 2.3rem;
+  color: #1f6b3f;
+  margin-bottom: 1rem;
 }
 
-.challenges p {
-  font-size: 16px;
+.challenges .intro {
+  max-width: 820px;
+  margin: 0 auto 3rem;
+  color: #333;
+  font-size: 1.05rem;
   line-height: 1.7;
-  margin-bottom: 20px;
-  color: #d1d1d1;
 }
 
-.challenges ul {
-  margin-left: 20px;
-  margin-bottom: 20px;
+/* =========================
+CARD ROW (SINGLE LINE)
+========================= */
+.challenge-cards {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding: 1rem 0 2rem;
+  margin-bottom: 3rem;
+  scroll-behavior: smooth;
 }
 
-.challenges li {
-  margin-bottom: 10px;
-  color: #e0e0e0;
-  
+/* Optional scrollbar styling */
+.challenge-cards::-webkit-scrollbar {
+  height: 6px;
 }
 
-.highlight {
-  color: #9ae6b4;
+.challenge-cards::-webkit-scrollbar-thumb {
+  background: rgba(47, 143, 70, 0.4);
+  border-radius: 4px;
+}
+
+/* =========================
+CARD
+========================= */
+.challenge-card {
+  min-width: 260px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2rem 1.6rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* =========================
+ICON PLACEHOLDER
+========================= */
+.card-icon {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1rem;
+  border-radius: 12px;
+  background: rgba(47, 143, 70, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* =========================
+CARD TEXT
+========================= */
+.challenge-card h3 {
+  color: #2f8f46;
+  font-size: 1.25rem;
+  margin-bottom: 0.6rem;
+}
+
+.challenge-card p {
+  color: #444;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* =========================
+HIGHLIGHT
+========================= */
+.challenges .highlight {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1.4rem 1.6rem;
+  background: rgba(47, 143, 70, 0.12);
+  border-radius: 14px;
+  color: #1f6b3f;
   font-weight: 500;
 }
 
+/* =========================
+MOBILE
+========================= */
+@media (max-width: 768px) {
+  .challenges {
+    padding: 4rem 1.2rem;
+  }
 
+  .challenges h2 {
+    font-size: 2rem;
+  }
+}
