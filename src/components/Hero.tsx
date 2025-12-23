@@ -21,6 +21,11 @@ const Hero = () => {
           knowledge, purpose, and modern guidance.
         </p>
 
+        <p className="hero-subtext">
+          Learn farming the right way — from soil to crops, guided by nature and technology.
+        </p>
+
+
         <button
           className="hero-btn"
           onClick={() => {

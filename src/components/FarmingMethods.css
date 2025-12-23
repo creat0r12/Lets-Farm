@@ -74,11 +74,15 @@ CARD
   transition: 
     transform 0.35s ease,
     box-shadow 0.35s ease;
+
+     backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  background: rgba(255, 255, 255, 0.92);
 }
 
 /* lift card */
 .method-card:hover {
-  transform: translateY(-10px);
+ transform: translateY(-10px) scale(1.015);
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
 }
 
@@ -130,6 +134,21 @@ IMAGE PLACEHOLDER
   justify-content: center;
 }
 
+.method-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.25),
+    transparent
+  );
+  z-index: 1;
+}
+
 .method-image img {
   width: 100%;
   height: 100%;
@@ -157,12 +176,32 @@ TEXT
   line-height: 1.6;
 }
 
+
+@keyframes organicGlow {
+  0% {
+    box-shadow: 0 0 0 rgba(47, 143, 70, 0.25);
+  }
+  50% {
+    box-shadow: 0 18px 45px rgba(47, 143, 70, 0.45);
+  }
+  100% {
+    box-shadow: 0 0 0 rgba(47, 143, 70, 0.25);
+  }
+}
+
+.method-card.highlight {
+  animation: organicGlow 4.5s ease-in-out infinite;
+}
+
+
+
 /* =========================
 MOBILE
 ========================= */
 @media (max-width: 768px) {
   .farming-methods {
     padding: 4rem 1.2rem;
+    background-attachment: scroll;
   }
 
   .section-title {
