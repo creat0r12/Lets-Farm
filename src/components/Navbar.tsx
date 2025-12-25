@@ -1,5 +1,6 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import logo from "../assets/logo.png";
 
 
 type NavbarProps = {
@@ -9,7 +10,10 @@ type NavbarProps = {
 function Navbar({ onAccountClick }: NavbarProps) {
   return (
     <nav className="navbar">
-      <div className="logo">Let’s Farm</div>
+      <div className="logo">
+        <img src={logo} alt="Let's Farm logo" />
+      </div>
+
 
       <ul className="nav-links">
         <li className="nav-item">
