@@ -16,11 +16,18 @@ function Navbar({ onAccountClick }: NavbarProps) {
           Just For You
           <div className="dropdown">
             <Link to="/location" className="dropdown-link">
-      Location-based info
-    </Link>
-            <span>Personal guidance</span>
-            <span>Recommendations</span>
+              📍 Location-based insights
+            </Link>
+
+            <span>🌾 Crop suggestions for your area</span>
+
+            <span>💰 Market value & crop demand</span>
+
+            <span>🌱 Organic farming suitability</span>
+
+            <span>🧭 Personal farming guidance</span>
           </div>
+
         </li>
 
         <li className="nav-item">
