@@ -30,10 +30,10 @@ const Hero = () => {
           className="hero-btn"
           onClick={() => {
             console.log("BUTTON CLICKED");
-            navigate("/learning");
+            navigate("/HowWeWork");
           }}
         >
-          Start Learning
+          HowWeWork
         </button>
       </div>
     </section>

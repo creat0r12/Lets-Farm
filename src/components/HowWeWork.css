@@ -1,0 +1,185 @@
+
+
+
+
+/* ===============================
+   HOW WE WORK – ORGANIC THEME
+   =============================== */
+
+.how-page {
+  position: relative;
+  z-index: 2;
+  padding-top: 64px;
+  /* height of navbar */
+  background: #f3efe6;
+  /* earthy paper-like background */
+  color: #2e2e2e;
+  font-family: "Georgia", "Times New Roman", serif;
+}
+
+/* ===============================
+   HERO / INTRO
+   =============================== */
+.how-hero {
+  padding: 5rem 2rem;
+  text-align: center;
+
+  background: linear-gradient(
+    to bottom,
+    #f3efe6,
+    #e9e3d6
+  );
+
+  border-radius: 20px;
+  margin: 1.5rem auto 4rem;
+  max-width: 1100px;
+   box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+}
+
+
+
+.how-hero h1 {
+  font-size: 3rem;
+  color: #355e3b;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.how-hero p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #3d3d3d;
+}
+
+/* ===============================
+   SECTIONS (FULL SCREEN)
+   =============================== */
+.how-section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  padding: 5rem 6rem;
+  background: #fffdf8;
+  border-top: 1px solid #ddd6c6;
+}
+
+/* Alternate subtle tone */
+.how-section:nth-child(even) {
+  background: #faf6ed;
+}
+
+/* ===============================
+   TEXT SIDE
+   =============================== */
+.how-text {
+  flex: 1;
+}
+
+.how-text h2 {
+  font-size: 2.3rem;
+  color: #355e3b;
+  margin-bottom: 1rem;
+}
+
+.how-text p {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #3d3d3d;
+  max-width: 540px;
+}
+
+.how-text ul,
+.how-text ol {
+  margin-top: 1rem;
+  padding-left: 1.4rem;
+}
+
+.how-text li {
+  margin-bottom: 0.6rem;
+  font-size: 1.05rem;
+}
+
+/* ===============================
+   VISUAL SIDE (IMAGES)
+   =============================== */
+.how-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* MAIN IMAGE STYLE */
+.how-image {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 18px;
+  object-fit: cover;
+
+  /* poster-like depth */
+  box-shadow:
+    0 20px 45px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+/* ===============================
+   PLACEHOLDER BOX (if image missing)
+   =============================== */
+.visual-box {
+  width: 420px;
+  height: 300px;
+  border-radius: 16px;
+  background: linear-gradient(135deg,
+      #d6c8a2,
+      #bfae7a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #3b3b3b;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* ===============================
+   CTA SECTION
+   =============================== */
+.how-cta {
+  padding: 6rem 2rem;
+  text-align: center;
+  background: linear-gradient(to bottom,
+      #e9e3d6,
+      #f3efe6);
+}
+
+.how-cta h2 {
+  font-size: 2.6rem;
+  color: #355e3b;
+  margin-bottom: 1rem;
+}
+
+.how-cta p {
+  max-width: 650px;
+  margin: 0 auto 2.5rem;
+  font-size: 1.15rem;
+  color: #3d3d3d;
+}
+
+.how-cta .primary-btn {
+  background: #355e3b;
+  color: #fff;
+  padding: 0.9rem 2.4rem;
+  font-size: 1.05rem;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.how-cta .primary-btn:hover {
+  background: #2c4d31;
+  transform: translateY(-2px);
+}

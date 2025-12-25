@@ -1,40 +1,40 @@
-import { useState } from "react";
 import "./Navbar.css";
+import { Link } from "react-router-dom";
+
 
 type NavbarProps = {
-  onSelect: (section: string) => void;
-  isTopPanelOpen: boolean;
+  onAccountClick: () => void;
 };
 
-function Navbar({ onSelect, isTopPanelOpen }: NavbarProps) {
-  const [active, setActive] = useState("home");
-
-  const handleClick = (section: string) => {
-    setActive(section);
-    onSelect(section);
-  };
-
+function Navbar({ onAccountClick }: NavbarProps) {
   return (
-    <nav className={`navbar ${isTopPanelOpen ? "navbar-panel-open" : ""}`}>
-      <div className="logo" onClick={() => handleClick("home")}>
-        Let’s Farm
-      </div>
+    <nav className="navbar">
+      <div className="logo">Let’s Farm</div>
 
       <ul className="nav-links">
-        <li className={active === "home" ? "active" : ""} onClick={() => handleClick("home")}>
-          Home
+        <li className="nav-item">
+          Just For You
+          <div className="dropdown">
+            <Link to="/location" className="dropdown-link">
+      Location-based info
+    </Link>
+            <span>Personal guidance</span>
+            <span>Recommendations</span>
+          </div>
         </li>
-        <li className={active === "why" ? "active" : ""} onClick={() => handleClick("why")}>
-          Why Farming
+
+        <li className="nav-item">
+          Our Role
+          <div className="dropdown">
+            <span>What we do</span>
+            <span>How we help</span>
+            <span>Our vision</span>
+          </div>
         </li>
-        <li className={active === "challenges" ? "active" : ""} onClick={() => handleClick("challenges")}>
-          Challenges
-        </li>
-        <li className={active === "vision" ? "active" : ""} onClick={() => handleClick("vision")}>
-          Vision
-        </li>
-        <li className={active === "contact" ? "active" : ""} onClick={() => handleClick("contact")}>
-          Contact
+
+        {/* ACCOUNT TAB */}
+        <li className="nav-item" onClick={onAccountClick}>
+          Account
         </li>
       </ul>
     </nav>
@@ -42,3 +42,4 @@ function Navbar({ onSelect, isTopPanelOpen }: NavbarProps) {
 }
 
 export default Navbar;
+
