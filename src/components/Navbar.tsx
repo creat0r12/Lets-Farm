@@ -10,9 +10,8 @@ type NavbarProps = {
 function Navbar({ onAccountClick }: NavbarProps) {
   return (
     <nav className="navbar">
-      <div className="logo">
-        <img src={logo} alt="Let's Farm logo" />
-      </div>
+      <div className="logo"></div>
+
 
 
       <ul className="nav-links">

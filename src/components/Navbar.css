@@ -174,14 +174,6 @@ HOVER SAFE AREA (CRITICAL)
 
 
 
-.logo img {
-  display: flex;
-  height: 110px;        /* perfect for 64px navbar */
-  width: 200px;
-  padding-right: 27px;
- 
- transform: translateY(-10px);
-}
 
 
 
