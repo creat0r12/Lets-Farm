@@ -1,6 +1,5 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import logo from "../assets/logo.png";
 
 
 type NavbarProps = {
