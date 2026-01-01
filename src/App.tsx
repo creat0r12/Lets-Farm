@@ -12,6 +12,8 @@ import AccountPanel from "./components/AccountPanel";
 import LocationServices from "./components/LocationServices";
 
 
+import SmartCropAdvisor from "./components/SmartCropAdvisor";
+
 
 
 import HowWeWork from "./components/HowWeWork";
@@ -54,6 +56,9 @@ function App() {
 
         <Route path="/HowWeWork" element={<HowWeWork />} />
         <Route path="/location" element={<LocationServices />} />
+
+        {/* SMART CROP ADVISOR */}
+        <Route path="/smart-advisor" element={<SmartCropAdvisor />} />
 
       </Routes>
 

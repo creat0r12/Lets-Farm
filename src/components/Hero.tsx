@@ -14,7 +14,7 @@ const Hero = () => {
       {/* Divider line */}
       <div className="hero-divider"></div>
 
-      {/* Small / supporting content */}
+      {/* Supporting content */}
       <div className="hero-sub">
         <p>
           Inspiring the next generation to reconnect with agriculture through
@@ -25,15 +25,14 @@ const Hero = () => {
           Learn farming the right way — from soil to crops, guided by nature and technology.
         </p>
 
-
+        {/* ONLY ONE CTA NOW */}
         <button
-          className="hero-btn"
+          className="hero-btn secondary"
           onClick={() => {
-            console.log("BUTTON CLICKED");
-            navigate("/HowWeWork");
+            navigate("/smart-advisor");
           }}
         >
-          HowWeWork
+          🌱 Smart Crop Advisor
         </button>
       </div>
     </section>

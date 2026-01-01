@@ -1,7 +1,6 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
-
 type NavbarProps = {
   onAccountClick: () => void;
 };
@@ -11,37 +10,43 @@ function Navbar({ onAccountClick }: NavbarProps) {
     <nav className="navbar">
       <div className="logo"></div>
 
-
-
       <ul className="nav-links">
+        {/* HOME */}
         <li className="nav-item">
-          Just For You
+          <Link to="/" className="nav-link">
+            Home
+          </Link>
+        </li>
+
+        {/* HELP */}
+        <li className="nav-item">
+          Help
           <div className="dropdown">
             <Link to="/location" className="dropdown-link">
               📍 Location-based insights
             </Link>
 
-            <span>🌾 Crop suggestions for your area</span>
-
-            <span>💰 Market value & crop demand</span>
-
-            <span>🌱 Organic farming suitability</span>
-
-            <span>🧭 Personal farming guidance</span>
+            <Link to="/chat" className="dropdown-link">
+              💬 Chat with us
+            </Link>
           </div>
-
         </li>
 
+        {/* KNOW MORE */}
         <li className="nav-item">
-          Our Role
+          Know More
           <div className="dropdown">
+            <Link to="/HowWeWork" className="dropdown-link">
+              ⚙️ How We Work
+            </Link>
             <span>What we do</span>
-            <span>How we help</span>
+            <span>How we help farmers</span>
             <span>Our vision</span>
           </div>
         </li>
 
-        {/* ACCOUNT TAB */}
+
+        {/* ACCOUNT */}
         <li className="nav-item" onClick={onAccountClick}>
           Account
         </li>
@@ -51,4 +56,3 @@ function Navbar({ onAccountClick }: NavbarProps) {
 }
 
 export default Navbar;
-
