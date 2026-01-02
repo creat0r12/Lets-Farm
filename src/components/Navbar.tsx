@@ -29,6 +29,9 @@ function Navbar({ onAccountClick }: NavbarProps) {
             <Link to="/chat" className="dropdown-link">
               💬 Chat with us
             </Link>
+            <Link to="/know-farming" className="dropdown-link">
+              🌱 Know About Farming
+            </Link>
           </div>
         </li>
 
@@ -39,11 +42,13 @@ function Navbar({ onAccountClick }: NavbarProps) {
             <Link to="/HowWeWork" className="dropdown-link">
               ⚙️ How We Work
             </Link>
-            <span>What we do</span>
-            <span>How we help farmers</span>
-            <span>Our vision</span>
+            <span>🤝How we help farmers</span>
+            <Link to="/vision" className="dropdown-link">
+              🌱 Our Vision
+            </Link>
           </div>
         </li>
+            
 
 
         {/* ACCOUNT */}

@@ -1,39 +1,70 @@
 import "./Hero.css";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import Lottie from "lottie-react";
+import heroAnimation from "../assets/Animation-hero.json";
+
+const messages = [
+  "Inspiring the next generation to reconnect with agriculture.",
+  "Helping beginners understand farming from the ground up.",
+  "Guiding farmers toward sustainable and smart practices.",
+  "Blending traditional farming wisdom with modern guidance.",
+];
 
 const Hero = () => {
   const navigate = useNavigate();
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % messages.length);
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <section className="hero">
-      {/* Main content */}
-      <div className="hero-main">
-        <h1>Reignite the Future of Farming</h1>
-      </div>
+      <div className="hero-container">
 
-      {/* Divider line */}
-      <div className="hero-divider"></div>
+        {/* LEFT SIDE — CONTENT */}
+        <div className="hero-left">
+          <div className="hero-main">
+            <h1>Reignite the Future of Farming</h1>
+          </div>
 
-      {/* Supporting content */}
-      <div className="hero-sub">
-        <p>
-          Inspiring the next generation to reconnect with agriculture through
-          knowledge, purpose, and modern guidance.
-        </p>
+          <div className="hero-divider"></div>
 
-        <p className="hero-subtext">
-          Learn farming the right way — from soil to crops, guided by nature and technology.
-        </p>
+          <div className="hero-rotator">
+            <p key={index} className="hero-rotate-text">
+              {messages[index]}
+            </p>
+          </div>
 
-        {/* ONLY ONE CTA NOW */}
-        <button
-          className="hero-btn secondary"
-          onClick={() => {
-            navigate("/smart-advisor");
-          }}
-        >
-          🌱 Smart Crop Advisor
-        </button>
+          <div className="hero-sub">
+            <p className="hero-subtext">
+              Learn farming the right way — from soil to crops, guided by nature
+              and technology.
+            </p>
+
+            <button
+              className="hero-btn"
+              onClick={() => navigate("/smart-advisor")}
+            >
+              🌱 Smart Crop Advisor
+            </button>
+          </div>
+        </div>
+
+        {/* RIGHT SIDE — ANIMATION */}
+        <div className="hero-right">
+          <Lottie
+            animationData={heroAnimation}
+            loop
+            autoplay
+          />
+        </div>
+
       </div>
     </section>
   );

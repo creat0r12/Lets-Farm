@@ -20,6 +20,10 @@ import HowWeWork from "./components/HowWeWork";
 
 
 
+import KnowFarming from "./components/KnowFarming";
+
+import Vision from "./components/Vision";
+
 
 
 function App() {
@@ -41,6 +45,9 @@ function App() {
 
       {/* PAGE ROUTES */}
       <Routes>
+
+
+
         {/* HOME PAGE */}
         <Route
           path="/"
@@ -55,12 +62,21 @@ function App() {
         />
 
         <Route path="/HowWeWork" element={<HowWeWork />} />
+
         <Route path="/location" element={<LocationServices />} />
 
         {/* SMART CROP ADVISOR */}
         <Route path="/smart-advisor" element={<SmartCropAdvisor />} />
 
+        <Route path="/know-farming" element={<KnowFarming />} />
+        {/* for vision */}
+        <Route path="/vision" element={<Vision />} />
+
+
       </Routes>
+
+
+
 
       {/* ✅ GLOBAL FOOTER (NOW ON ALL PAGES) */}
       <Footer />

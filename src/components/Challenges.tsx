@@ -1,81 +1,68 @@
 import "./Challenges.css";
+import farmersMarket from "../assets/Farmers-market-rafiki.svg";
+
 
 const Challenges = () => {
   return (
     <section className="challenges">
-      <h2>Challenges in Modern Farming</h2>
 
-      <p className="intro">
-        Farming today is no longer simple. Rising costs, chemical dependency,
-        and lack of proper guidance have made agriculture risky and stressful,
-        especially for small and young farmers.
-      </p>
+      {/* MAIN LARGE BOX */}
+      <div className="main-box">
 
-      <div className="challenge-cards">
-        <div className="challenge-card">
-          <div className="card-icon">
-    {/* SVG or image goes here later */}
-  </div>
-          <h3>Chemical Dependency</h3>
-          <p>
-            Heavy dependence on chemical fertilizers and pesticides increases
-            costs and harms soil life.
-          </p>
+        {/* LEFT: INFO (SCROLLABLE) */}
+        <div className="left-box">
+          <h2>Who This Platform Is For</h2>
+
+          <div className="info-box">
+            <h3>New & Beginner Farmers</h3>
+            <p>
+              People starting farming who are unsure which crop suits their land
+              and local conditions.
+            </p>
+          </div>
+
+          <div className="info-box">
+            <h3>Small Landholders</h3>
+            <p>
+              Farmers with limited land who need to avoid risky crop choices
+              and reduce losses.
+            </p>
+          </div>
+
+          <div className="info-box">
+            <h3>Organic & Sustainable Farmers</h3>
+            <p>
+              Farmers who want to reduce chemical use and follow sustainable
+              farming practices.
+            </p>
+          </div>
+
+          <div className="info-box">
+            <h3>Students & Learners</h3>
+            <p>
+              Agriculture students or learners who want practical,
+              real-world farming guidance.
+            </p>
+          </div>
+
+          <div className="info-box highlight">
+            <p>
+              This MVP helps users make better crop decisions using
+              location, soil type, and farming preference.
+            </p>
+          </div>
         </div>
 
-        <div className="challenge-card">
-          <div className="card-icon">
-    {/* SVG or image goes here later */}
-  </div>
-          <h3>Soil Health Decline</h3>
-          <p>
-            Continuous chemical use degrades soil quality and reduces long-term
-            productivity.
-          </p>
+        {/* RIGHT: IMAGE */}
+        <div className="right-box">
+          <img
+            src={farmersMarket}
+            alt="Farmers market illustration"
+            className="challenge-illustration"
+          />
         </div>
 
-        <div className="challenge-card">
-          <div className="card-icon">
-    {/* SVG or image goes here later */}
-  </div>
-          <h3>Climate Uncertainty</h3>
-          <p>
-            Unpredictable climate and weather conditions cause crop failures
-            and income loss.
-          </p>
-        </div>
-
-        <div className="challenge-card">
-          <div className="card-icon">
-    {/* SVG or image goes here later */}
-  </div>
-          <h3>Knowledge Gap</h3>
-          <p>
-            Farmers lack clear guidance on sustainable and organic farming
-            practices.
-          </p>
-        </div>
-
-        <div className="challenge-card">
-          <div className="card-icon">
-    {/* SVG or image goes here later */}
-  </div>
-          <h3>Market Access Issues</h3>
-          <p>
-            Limited access to trusted markets makes fair pricing difficult
-            for farmers.
-          </p>
-        </div>
       </div>
-
-      <p className="highlight">
-        <div className="card-icon">
-    {/* SVG or image goes here later */}
-  </div>
-        These challenges are pushing many away from farming — but with the right
-        knowledge and a shift towards organic and sustainable methods, farming
-        can regain stability and purpose.
-      </p>
     </section>
   );
 };

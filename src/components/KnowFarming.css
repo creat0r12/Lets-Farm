@@ -1,16 +1,16 @@
-.vision {
+.know-farming {
   width: 100%;
   min-height: 100vh;
   padding: 4rem 2rem;
-  background: #ffffff;
+  background: #f7faf8;
 }
 
-.vision-container {
+.know-container {
   max-width: 900px;
   margin: 0 auto;
 }
 
-.vision-container h1 {
+.know-container h1 {
   font-size: 2.4rem;
   color: #166534;
   margin-bottom: 1rem;
@@ -22,12 +22,12 @@
   margin-bottom: 2.5rem;
 }
 
-.vision-block {
+.topic {
   padding: 1.2rem 0;
   border-bottom: 1px solid #e5e7eb;
 }
 
-.vision-block h2 {
+.topic h2 {
   font-size: 1.3rem;
   color: #14532d;
   margin: 0;

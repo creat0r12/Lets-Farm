@@ -1,29 +1,38 @@
-import "./Vision.css"
+import "./Vision.css";
 
-function Vision() {
+const Vision = () => {
   return (
     <section className="vision">
-      <h2>Our Vision</h2>
+      <div className="vision-container">
+        <h1>Our Vision</h1>
 
-      <p>
-        We envision a future where farming is respected, sustainable, and
-        attractive to the next generation. A future where agriculture works in
-        harmony with nature, not against it.
-      </p>
+        <p className="intro">
+          Our vision is to make farming understandable, accessible,
+          and sustainable for everyone.
+        </p>
 
-      <p>
-        By promoting organic practices, clear guidance, and modern tools, we aim
-        to help farmers and youth make confident decisions — from soil care to
-        crop selection and long-term sustainability.
-      </p>
+        <div className="vision-block">
+          <h2>🌱 Why This Platform Exists</h2>
+        </div>
 
-      <p>
-        In the future, this platform will evolve to provide smart assistance
-        through technology, market awareness, and on-ground support — ensuring
-        farming remains meaningful and future-ready.
-      </p>
+        <div className="vision-block">
+          <h2>🤝 Supporting Farmers & Learners</h2>
+        </div>
+
+        <div className="vision-block">
+          <h2>🌍 Sustainable & Responsible Farming</h2>
+        </div>
+
+        <div className="vision-block">
+          <h2>🚀 Future of Smart Farming</h2>
+        </div>
+
+        <p className="note">
+          This vision will evolve as the platform grows.
+        </p>
+      </div>
     </section>
   );
-}
+};
 
 export default Vision;

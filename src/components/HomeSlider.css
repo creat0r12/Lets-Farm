@@ -17,7 +17,7 @@ SLIDER WINDOW
   height: 500px;
   padding: 2rem 4rem;
 
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(14px);
 
   display: flex;
@@ -25,8 +25,6 @@ SLIDER WINDOW
   overflow: hidden;
 
   overscroll-behavior-x: contain;
-
-  
 }
 
 /* =========================
@@ -46,16 +44,41 @@ SLIDER TRACK
 }
 
 /* =========================
-SLIDE CONTENT
+SLIDE CONTENT (READABILITY FIX)
 ========================= */
+.slide h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: #14532d;          /* darker green for clarity */
+  margin-bottom: 1rem;
+}
+
 .slide h2 {
-  color: #1f7a3f;
-  margin-bottom: 0.8rem;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: #14532d;
+  margin-bottom: 1rem;
 }
 
 .slide p {
-  color: #413c3c;
-  line-height: 1.6;
+  font-size: 1.1rem;
+  color: #1f2937;          /* dark gray for contrast */
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0 auto 0.8rem;
+}
+
+/* list readability (slide 3) */
+.slide ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.2rem 0;
+}
+
+.slide li {
+  font-size: 1.1rem;
+  color: #1f2937;
+  margin-bottom: 0.6rem;
 }
 
 /* =========================
@@ -67,8 +90,8 @@ NAV BUTTONS
   transform: translateY(-50%);
   background: none;
   border: none;
-  font-size: 2rem;
-  color: #2f8f46;
+  font-size: 2.2rem;
+  color: #166534;
   cursor: pointer;
   z-index: 5;
 }
@@ -98,24 +121,34 @@ DOTS
 }
 
 .dot {
-  width: 8px;
-  height: 8px;
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
-  background: rgba(47, 143, 70, 0.35);
+  background: rgba(22, 101, 52, 0.35);
   cursor: pointer;
 }
 
 .dot.active {
-  background: #2f8f46;
+  background: #166534;
 }
 
 /* =========================
-MOBILE
+MOBILE READABILITY
 ========================= */
 @media (max-width: 768px) {
   .slider-window {
     height: auto;
-    padding: 2rem 1.2rem;
+    padding: 2rem 1.4rem;
+  }
+
+  .slide h1,
+  .slide h2 {
+    font-size: 1.8rem;
+  }
+
+  .slide p,
+  .slide li {
+    font-size: 1rem;
   }
 
   .nav-btn {

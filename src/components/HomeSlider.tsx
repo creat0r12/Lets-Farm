@@ -1,18 +1,53 @@
 import { useState, useRef, useEffect } from "react";
 import "./HomeSlider.css";
 
-import WhyFarming from "./WhyFarming";
-import Vision from "./Vision";
-import HowWeHelp from "./HowWeHelp";
-
 function HomeSlider() {
   const [index, setIndex] = useState(0);
   const windowRef = useRef<HTMLDivElement>(null);
 
+  /* =========================
+     SLIDES (MVP FINAL CONTENT)
+     — CONTENT ONLY CHANGED
+  ========================= */
   const slides = [
-    <WhyFarming key="why" />,
-    <Vision key="vision" />,
-    <HowWeHelp key="help" />
+    (
+      <div className="home-slide">
+        <h1>Farming Decisions Are Often Guesswork</h1>
+        <p>
+          Many farmers and beginners struggle to choose the right crop for their land.
+        </p>
+        <p>
+          Wrong crop selection leads to low yield, financial loss, and soil damage.
+        </p>
+      </div>
+    ),
+
+    (
+      <div className="home-slide">
+        <h1>A Simple Crop Guidance Tool</h1>
+        <p>
+          Let’s Farm helps farmers make better crop decisions using basic information
+          like location, soil type, and farming style.
+        </p>
+        <p>
+          The goal is to reduce guesswork and support sustainable farming practices.
+        </p>
+      </div>
+    ),
+
+    (
+      <div className="home-slide">
+        <h1>Smart Crop Advisor</h1>
+        <ul>
+          <li>Select your location</li>
+          <li>Select soil type and farming style</li>
+          <li>Get suitable crop guidance with tips and precautions</li>
+        </ul>
+        <p style={{ marginTop: "1rem", fontWeight: 600 }}>
+          Try the Smart Crop Advisor to get started.
+        </p>
+      </div>
+    )
   ];
 
   /* =========================
@@ -27,7 +62,8 @@ function HomeSlider() {
   };
 
   /* =========================
-     TRACKPAD / GESTURE (UNCHANGED)
+     TRACKPAD / GESTURE
+     (UNCHANGED)
   ========================= */
   useEffect(() => {
     const el = windowRef.current;
@@ -74,9 +110,9 @@ function HomeSlider() {
           className="slider-track"
           style={{ transform: `translateX(-${index * 100}%)` }}
         >
-          {slides.map((Component, i) => (
+          {slides.map((content, i) => (
             <div className="slide" key={i}>
-              {Component}
+              {content}
             </div>
           ))}
         </div>
