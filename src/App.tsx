@@ -24,6 +24,7 @@ import KnowFarming from "./components/KnowFarming";
 
 import Vision from "./components/Vision";
 
+import Products from "./components/Products";
 
 
 function App() {
@@ -71,6 +72,8 @@ function App() {
         <Route path="/know-farming" element={<KnowFarming />} />
         {/* for vision */}
         <Route path="/vision" element={<Vision />} />
+ 
+        <Route path="/products" element={<Products />} />
 
 
       </Routes>

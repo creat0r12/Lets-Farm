@@ -13,31 +13,40 @@
 
 .hero-container {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-
   display: flex;
   align-items: center;
-  gap: 3rem;
 
-  padding: 0 4rem;
+  min-height: calc(100vh - 64px);
 }
+
+
+
+
 
 /* LEFT SIDE — TEXT */
 .hero-left {
-  flex: 1.1;
+  flex: 0 0 55%;          /* fixed share */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
+  padding-left: 64px;    /* 👈 edge spacing you control */
+  padding-right: 2rem;
+
+  gap: 0.4rem;
 }
+
 
 /* RIGHT SIDE — ANIMATION */
 .hero-right {
-  flex: 0.9;
+  flex: 0 0 45%;          /* fixed share */
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
+
+  padding-right: 64px;   /* 👈 edge spacing you control */
 }
+
+
 
 .hero-right > * {
   width: 460px;       /* 👈 BIGGER animation */
@@ -119,13 +128,16 @@
   letter-spacing: 0.2px;
   line-height: 1.7;
 
-  color: rgba(255, 255, 255, 0.95);
+  color: #f9fafb;
 
-  /* light clarity boost */
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.55),
+    0 0 8px rgba(255, 255, 255, 0.7);
 
   animation: fadeSlide 0.9s ease;
 }
+
+
 
 /* =========================
    SUPPORTING TEXT
@@ -136,18 +148,29 @@
   max-width: 640px;
 
   margin-bottom: 1rem;
-  color: rgba(255, 255, 255, 0.9);
+
+  color: #f9fafb; /* 👈 near-white for dark areas */
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.55),   /* dark edge */
+    0 0 8px rgba(255, 255, 255, 0.65); /* white glow */
 }
 
 .hero-subtext {
   font-size: 0.95rem;
   margin-bottom: 2.2rem;
-  color: rgba(255, 255, 255, 0.8);
+
+  color: #f3f4f6;
+
+  text-shadow:
+    0 1px 2px rgba(0, 0, 0, 0.45),
+    0 0 6px rgba(255, 255, 255, 0.6);
 }
 
-/* =========================
-   CTA BUTTON
-========================= */
+
+
+
+
 /* =========================
    HERO CTA BUTTON (CLEAN & NORMAL)
 ========================= */

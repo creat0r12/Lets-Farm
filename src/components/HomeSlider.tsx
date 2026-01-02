@@ -10,44 +10,49 @@ function HomeSlider() {
      — CONTENT ONLY CHANGED
   ========================= */
   const slides = [
-    (
-      <div className="home-slide">
-        <h1>Farming Decisions Are Often Guesswork</h1>
-        <p>
-          Many farmers and beginners struggle to choose the right crop for their land.
-        </p>
-        <p>
-          Wrong crop selection leads to low yield, financial loss, and soil damage.
-        </p>
-      </div>
-    ),
+   (
+  <div className="home-slide">
+    <h1>Choosing the Right Crop Is Not Easy</h1>
+    <p>
+      Many farmers and beginners start farming without knowing what crop
+      truly suits their land.
+    </p>
+    <p>
+      Wrong decisions often lead to poor yield, wasted money,
+      and long-term soil damage.
+    </p>
+  </div>
+)
+,
 
     (
-      <div className="home-slide">
-        <h1>A Simple Crop Guidance Tool</h1>
-        <p>
-          Let’s Farm helps farmers make better crop decisions using basic information
-          like location, soil type, and farming style.
-        </p>
-        <p>
-          The goal is to reduce guesswork and support sustainable farming practices.
-        </p>
-      </div>
-    ),
+  <div className="home-slide">
+    <h1>Farming Should Be Guided, Not Guesswork</h1>
+    <p>
+      Let’s Farm helps you make better farming decisions using
+      simple inputs like your location, soil type, and farming method.
+    </p>
+    <p>
+      Our focus is sustainable, practical, and farmer-friendly guidance.
+    </p>
+  </div>
+)
+,
 
     (
-      <div className="home-slide">
-        <h1>Smart Crop Advisor</h1>
-        <ul>
-          <li>Select your location</li>
-          <li>Select soil type and farming style</li>
-          <li>Get suitable crop guidance with tips and precautions</li>
-        </ul>
-        <p style={{ marginTop: "1rem", fontWeight: 600 }}>
-          Try the Smart Crop Advisor to get started.
-        </p>
-      </div>
-    )
+  <div className="home-slide">
+    <h1>Start With Smart Crop Advisor</h1>
+    <ul>
+      <li>Tell us your location</li>
+      <li>Select soil type and farming style</li>
+      <li>Get suitable crop suggestions with tips</li>
+    </ul>
+    <p style={{ marginTop: "1rem", fontWeight: 600 }}>
+      Simple steps. Clear guidance. Better farming decisions.
+    </p>
+  </div>
+)
+
   ];
 
   /* =========================

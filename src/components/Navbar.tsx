@@ -8,14 +8,14 @@ type NavbarProps = {
 function Navbar({ onAccountClick }: NavbarProps) {
   return (
     <nav className="navbar">
+      {/* LOGO */}
       <div className="logo"></div>
 
+      {/* MAIN NAV */}
       <ul className="nav-links">
         {/* HOME */}
         <li className="nav-item">
-          <Link to="/" className="nav-link">
-            Home
-          </Link>
+          <Link to="/" className="nav-link">Home</Link>
         </li>
 
         {/* HELP */}
@@ -25,7 +25,6 @@ function Navbar({ onAccountClick }: NavbarProps) {
             <Link to="/location" className="dropdown-link">
               📍 Location-based insights
             </Link>
-
             <Link to="/chat" className="dropdown-link">
               💬 Chat with us
             </Link>
@@ -42,20 +41,38 @@ function Navbar({ onAccountClick }: NavbarProps) {
             <Link to="/HowWeWork" className="dropdown-link">
               ⚙️ How We Work
             </Link>
-            <span>🤝How we help farmers</span>
+            <span className="dropdown-link">
+              🤝 How we help farmers
+            </span>
             <Link to="/vision" className="dropdown-link">
               🌱 Our Vision
             </Link>
           </div>
         </li>
-            
 
+        {/* STORE (NEW) */}
+        <li className="nav-item">
+          Store
+          <div className="dropdown">
+            <Link to="/products" className="dropdown-link">
+              🛒 Products
+            </Link>
 
-        {/* ACCOUNT */}
-        <li className="nav-item" onClick={onAccountClick}>
-          Account
+            <Link to="/store/ads" className="dropdown-link">
+              📢 Ads
+            </Link>
+          </div>
         </li>
       </ul>
+
+      {/* ACCOUNT CAPSULE (RIGHT CORNER) */}
+      <div className="account-capsule" onClick={onAccountClick}>
+        <span className="account-icon">👤</span>
+
+
+        <span className="account-text">Sign Up</span>
+      </div>
+
     </nav>
   );
 }
