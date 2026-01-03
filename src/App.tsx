@@ -34,7 +34,7 @@ function App() {
   return (
     <>
       {/* FIXED WALLPAPER */}
-      <div className="fixed-wallpaper" />
+      {/* <div className="fixed-wallpaper" /> */}
 
       {/* NAVBAR */}
       <Navbar onAccountClick={() => setAccountOpen(true)} />
@@ -54,6 +54,8 @@ function App() {
           path="/"
           element={
             <>
+              {/* HOME WALLPAPER ONLY */}
+              <div className="fixed-wallpaper" />
               <Hero />
               <HomeSlider />
               <Challenges />
@@ -72,7 +74,7 @@ function App() {
         <Route path="/know-farming" element={<KnowFarming />} />
         {/* for vision */}
         <Route path="/vision" element={<Vision />} />
- 
+
         <Route path="/products" element={<Products />} />
 
 

@@ -1,4 +1,6 @@
 import "./Vision.css";
+import whyfarmImg from "../assets/why-farm.png";
+
 
 function Vision() {
   return (
@@ -36,7 +38,11 @@ function Vision() {
 
         <div className="vision-svg">
           {/* SVG: Farmer Struggles */}
-          <span>SVG: Farmer Challenges</span>
+            <img
+      src={whyfarmImg}
+      alt="Why Let's Farm Exists"
+      className="vision-image"
+    />
         </div>
       </section>
 

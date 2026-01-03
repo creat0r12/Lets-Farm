@@ -77,28 +77,21 @@
 ===================================================== */
 .vision-svg {
   flex: 1;
-  height: 300px;
-  border-radius: 26px;
-  background:
-    radial-gradient(circle at top left, #f1fbf6, transparent 60%),
-    linear-gradient(135deg, #f7fdf9, #eef9f3);
-  border: 2px dashed #cfe9db;
+  height: auto;          /* ⬅ let image decide height */
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #1f6b3f;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-  box-shadow:
-    0 30px 60px rgba(0,0,0,0.08),
-    inset 0 0 0 1px rgba(255,255,255,0.4);
-  transition: transform 0.8s ease, box-shadow 0.8s ease;
+  padding: 1rem;         /* small breathing space */
+  background: none;      /* ⬅ removed */
+  border: none;          /* ⬅ removed */
+  box-shadow: none;      /* ⬅ removed */
 }
 
-.vision-svg:hover {
+
+/* .vision-svg:hover {
   transform: translateY(-10px) scale(1.03);
   box-shadow: 0 45px 80px rgba(0,0,0,0.12);
-}
+} */
 
 /* =====================================================
    FOCUS GRID — PROBLEMS
@@ -203,6 +196,17 @@
   transform: translateY(60px);
   animation: revealUp 1.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
 }
+
+
+
+.vision-image {
+  width: 100%;
+  max-width: 420px;   /* 🔹 change this value */
+  height: auto;
+  border-radius: 20px;
+  object-fit: contain;
+}
+
 
 @keyframes revealUp {
   to {
