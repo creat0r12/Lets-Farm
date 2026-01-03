@@ -1,3 +1,8 @@
+
+
+import Chatbot from "./components/Chatbot/Chatbot";
+
+
 import { Routes, Route } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
@@ -8,7 +13,7 @@ import HomeSlider from "./components/HomeSlider";
 import Footer from "./components/Footer";
 
 import { useState } from "react";
-import AccountPanel from "./components/AccountPanel";
+import AccountPanel from "./components/AccountManager";
 import LocationServices from "./components/LocationServices";
 
 
@@ -25,9 +30,14 @@ import KnowFarming from "./components/KnowFarming";
 import Vision from "./components/Vision";
 
 import Products from "./components/Products";
+import AccountManager from "./components/AccountManager";
 
 
 function App() {
+
+const [chatOpen, setChatOpen] = useState(false);
+
+
 
   const [accountOpen, setAccountOpen] = useState(false);
 
@@ -37,7 +47,11 @@ function App() {
       {/* <div className="fixed-wallpaper" /> */}
 
       {/* NAVBAR */}
-      <Navbar onAccountClick={() => setAccountOpen(true)} />
+      <Navbar
+  onAccountClick={() => setAccountOpen(true)}
+  onChatClick={() => setChatOpen(true)}
+/>
+
 
 
 
@@ -81,12 +95,16 @@ function App() {
       </Routes>
 
 
+<Chatbot
+  open={chatOpen}
+  onClose={() => setChatOpen(false)}
+/>
 
 
       {/* ✅ GLOBAL FOOTER (NOW ON ALL PAGES) */}
       <Footer />
       {/* account pannel */}
-      <AccountPanel
+      <AccountManager
         open={accountOpen}
         onClose={() => setAccountOpen(false)}
       />

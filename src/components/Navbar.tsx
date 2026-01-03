@@ -1,40 +1,61 @@
+import { useEffect, useState } from "react";
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 
 type NavbarProps = {
   onAccountClick: () => void;
+  onChatClick: () => void;
 };
 
-function Navbar({ onAccountClick }: NavbarProps) {
+interface User {
+  name?: string;
+  email?: string;
+}
+
+function Navbar({ onAccountClick, onChatClick }: NavbarProps) {
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("user");
+    if (stored) {
+      try {
+        setUser(JSON.parse(stored));
+      } catch {
+        localStorage.removeItem("user");
+      }
+    }
+  }, []);
+
+  const initial = user?.name
+    ? user.name.charAt(0).toUpperCase()
+    : "👤";
+
   return (
     <nav className="navbar">
       {/* LOGO */}
       <div className="logo"></div>
 
-      {/* MAIN NAV */}
+      {/* CENTER NAV */}
       <ul className="nav-links">
-        {/* HOME */}
         <li className="nav-item">
           <Link to="/" className="nav-link">Home</Link>
         </li>
 
-        {/* HELP */}
         <li className="nav-item">
           Help
           <div className="dropdown">
             <Link to="/location" className="dropdown-link">
               📍 Location-based insights
             </Link>
-            <Link to="/chat" className="dropdown-link">
+            <span className="dropdown-link" onClick={onChatClick}>
               💬 Chat with us
-            </Link>
+            </span>
             <Link to="/know-farming" className="dropdown-link">
               🌱 Know About Farming
             </Link>
           </div>
         </li>
 
-        {/* KNOW MORE */}
         <li className="nav-item">
           Know More
           <div className="dropdown">
@@ -50,14 +71,12 @@ function Navbar({ onAccountClick }: NavbarProps) {
           </div>
         </li>
 
-        {/* STORE (NEW) */}
         <li className="nav-item">
           Store
           <div className="dropdown">
             <Link to="/products" className="dropdown-link">
               🛒 Products
             </Link>
-
             <Link to="/store/ads" className="dropdown-link">
               📢 Ads
             </Link>
@@ -65,14 +84,13 @@ function Navbar({ onAccountClick }: NavbarProps) {
         </li>
       </ul>
 
-      {/* ACCOUNT CAPSULE (RIGHT CORNER) */}
+      {/* ACCOUNT CAPSULE */}
       <div className="account-capsule" onClick={onAccountClick}>
-        <span className="account-icon">👤</span>
-
-
-        <span className="account-text">Sign Up</span>
+        <div className="account-avatar">
+          <span className="avatar-initial">{initial}</span>
+        </div>
+        <span className="account-label">Account</span>
       </div>
-
     </nav>
   );
 }

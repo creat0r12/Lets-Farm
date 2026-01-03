@@ -1,0 +1,212 @@
+/* =========================
+   OVERLAY
+========================= */
+.account-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(18px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.25s ease-out;
+}
+
+/* =========================
+   PANEL
+========================= */
+.account-panel {
+  width: 50vw;
+  max-width: 700px;
+  min-width: 320px;
+  max-height: 82vh;
+  padding: 36px 40px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow:
+    0 40px 90px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  overflow-y: auto;
+  animation: slideUp 0.3s ease-out;
+}
+
+/* =========================
+   HEADER
+========================= */
+.account-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 30px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.avatar-wrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 32px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.45);
+}
+
+.account-title h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.email {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* =========================
+   INFO
+========================= */
+.account-info p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #334155;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+.account-actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.primary,
+.danger,
+.auth-submit {
+  border: none;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primary {
+  background: #0f172a;
+  color: white;
+}
+
+.primary:hover {
+  background: #020617;
+  transform: translateY(-1px);
+}
+
+.danger {
+  background: #e11d48;
+  color: white;
+}
+
+.danger:hover {
+  background: #be123c;
+  transform: translateY(-1px);
+}
+
+/* =========================
+   AUTH
+========================= */
+.auth-title {
+  font-size: 24px;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  margin-bottom: 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid #cbd5e1;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #0f172a;
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.15);
+}
+
+.auth-submit {
+  width: 100%;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+  margin-top: 6px;
+}
+
+.auth-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+}
+
+.auth-switch {
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+  color: #475569;
+}
+
+.auth-switch span {
+  color: #0f172a;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.auth-switch span:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   SCROLLBAR (SUBTLE)
+========================= */
+.account-panel::-webkit-scrollbar {
+  width: 6px;
+}
+
+.account-panel::-webkit-scrollbar-thumb {
+  background: rgba(15, 23, 42, 0.3);
+  border-radius: 6px;
+}
+
+/* =========================
+   MOBILE
+========================= */
+@media (max-width: 768px) {
+  .account-panel {
+    width: 92vw;
+    padding: 26px;
+  }
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

@@ -174,55 +174,76 @@ HOVER SAFE AREA (CRITICAL)
 
 
 
+/* =========================
+ACCOUNT CAPSULE (NAVBAR MATCHED)
+========================= */
 .account-capsule {
   position: absolute;
   right: 32px;
 
-  height: 42px;
-  width: 42px;
+  height: 40px;     /* ✅ MATCHES center navbar pill */
+  width: 40px;      /* collapsed = avatar size */
 
   display: flex;
   align-items: center;
-  justify-content: center;
 
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
 
   cursor: pointer;
   overflow: hidden;
 
   transition:
     width 0.35s ease,
-    background-color 0.3s ease;
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
 
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow:
+    0 6px 18px rgba(0, 0, 0, 0.16),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55);
 }
 
-
+/* EXPAND ON HOVER */
 .account-capsule:hover {
   width: 140px;
-  background: rgba(255, 255, 255, 0.95);
+  transform: translateY(-1px);
 }
 
 
+/* =========================
+AVATAR (PERFECT FIT)
+========================= */
+.account-avatar {
+  height: 40px;   /* ✅ EXACT capsule height */
+  width: 40px;
 
-.account-icon {
-  font-size: 1.1rem;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+
   display: flex;
-  align-items: right;
+  align-items: center;
   justify-content: center;
+
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+
+  flex-shrink: 0;
 }
 
 
-
-.account-text {
-  white-space: nowrap;
-  margin-left: 10px;
+/* =========================
+LABEL (SLIDE IN)
+========================= */
+.account-label {
+  margin-left: 12px;
   margin-right: 16px;
 
-  font-size: 0.9rem;
+  font-size: 14px;
   font-weight: 500;
-  color: #14532d;
+  color: #0f172a;
+  white-space: nowrap;
 
   opacity: 0;
   transform: translateX(-6px);
@@ -232,10 +253,9 @@ HOVER SAFE AREA (CRITICAL)
     transform 0.25s ease;
 }
 
-.account-capsule:hover .account-text {
+.account-capsule:hover .account-label {
   opacity: 1;
   transform: translateX(0);
-  margin-left: 12px;
 }
 
 
