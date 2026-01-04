@@ -1,7 +1,9 @@
 import "./Vision.css";
 import whyfarmImg from "../assets/why-farm.png";
-
-
+import learnstartfarming from "../assets/learnstartpoint.png"
+import builtontrust from "../assets/builtontrust.png"
+import fairmarketplace from "../assets/fairmarketplace.png"
+import techhelpfarmer from "../assets/techhelpfamer.png"
 function Vision() {
   return (
     <main className="vision-page">
@@ -38,11 +40,11 @@ function Vision() {
 
         <div className="vision-svg">
           {/* SVG: Farmer Struggles */}
-            <img
-      src={whyfarmImg}
-      alt="Why Let's Farm Exists"
-      className="vision-image"
-    />
+          <img
+            src={whyfarmImg}
+            alt="Why Let's Farm Exists"
+            className="vision-image"
+          />
         </div>
       </section>
 
@@ -52,7 +54,10 @@ function Vision() {
       <section className="vision-section reverse reveal">
         <div className="vision-svg">
           {/* SVG: Learning / Growth */}
-          <span>SVG: Learning & Growth</span>
+          <img src={learnstartfarming} 
+          alt="learning is the starting point"
+          className="vision-image"
+           />
         </div>
 
         <div className="vision-text">
@@ -104,7 +109,11 @@ function Vision() {
 
         <div className="vision-svg">
           {/* SVG: Trust / Verification */}
-          <span>SVG: Verified Farmers</span>
+          <img
+            src={builtontrust}
+            alt="built on trust not asumption"
+            className="vision-image"
+          />
         </div>
       </section>
 
@@ -114,7 +123,11 @@ function Vision() {
       <section className="vision-section reverse reveal">
         <div className="vision-svg">
           {/* SVG: Marketplace */}
-          <span>SVG: Farmer Marketplace</span>
+           <img
+            src={fairmarketplace}
+            alt="fair market place"
+            className="vision-image"
+          />
         </div>
 
         <div className="vision-text">
@@ -169,7 +182,10 @@ function Vision() {
 
         <div className="vision-svg">
           {/* SVG: Smart Farming */}
-          <span>SVG: Smart Farming Tech</span>
+          <img src={techhelpfarmer}
+            alt="Technology thats help farmer"
+            className="vision-image"
+          />
         </div>
       </section>
 

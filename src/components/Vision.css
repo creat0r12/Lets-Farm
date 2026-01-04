@@ -201,7 +201,7 @@
 
 .vision-image {
   width: 100%;
-  max-width: 420px;   /* 🔹 change this value */
+  max-width: 950px;   /* 🔹 change this value */
   height: auto;
   border-radius: 20px;
   object-fit: contain;
