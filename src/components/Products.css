@@ -76,8 +76,8 @@
 }
 
 .filter-bar select {
-  padding: 0.6rem 1rem;
-  border-radius: 10px;
+  padding: 0.65rem 1.2rem;
+  border-radius: 12px;
   border: 1px solid #ccc;
   font-size: 0.95rem;
   background: #ffffff;
@@ -85,34 +85,24 @@
 }
 
 /* =========================
-   FARMER PANEL
+   ADD PRODUCT BUTTON
 ========================= */
-.farmer-panel {
-  max-width: 900px;
-  margin: 0 auto 3rem;
-  padding: 2rem;
-  background: #f8fbf9;
-  border-left: 5px solid #2ea66f;
-  border-radius: 14px;
-}
-
-.farmer-panel h2 {
-  color: #1f6b3f;
-  margin-bottom: 0.6rem;
-}
-
-.farmer-panel p {
-  color: #333;
-  margin-bottom: 1rem;
-}
-
-.farmer-panel button {
-  padding: 0.6rem 1.2rem;
-  border-radius: 20px;
+.add-product-btn {
+  background: linear-gradient(135deg, #2ea66f, #1f6b3f);
+  color: #ffffff;
+  padding: 0.85rem 2.4rem;
+  border-radius: 32px;
   border: none;
-  background: #ccc;
-  color: #666;
-  cursor: not-allowed;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 16px 32px rgba(46,166,111,0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.add-product-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 22px 42px rgba(46,166,111,0.55);
 }
 
 /* =========================
@@ -131,7 +121,7 @@
 ========================= */
 .product-card {
   background: #f8fbf9;
-  border-radius: 16px;
+  border-radius: 18px;
   padding: 1.6rem;
   box-shadow: 0 14px 30px rgba(0,0,0,0.08);
   cursor: pointer;
@@ -169,61 +159,151 @@
 }
 
 /* =========================
+   CART PANEL
+========================= */
+.farmer-panel {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #f8fbf9;
+  border-left: 6px solid #2ea66f;
+  border-radius: 18px;
+  box-shadow: 0 18px 35px rgba(0,0,0,0.08);
+}
+
+.farmer-panel h2 {
+  color: #1f6b3f;
+  margin-bottom: 1rem;
+}
+
+.farmer-panel p {
+  background: #ffffff;
+  padding: 0.7rem 1.1rem;
+  border-radius: 14px;
+  margin-bottom: 0.6rem;
+  font-size: 0.92rem;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+}
+
+/* =========================
    MODAL OVERLAY
 ========================= */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 50;
+  z-index: 100;
 }
 
 /* =========================
-   MODAL BOX
+   ADD / EDIT PRODUCT MODAL
 ========================= */
 .modal {
   background: #ffffff;
-  max-width: 520px;
-  width: 90%;
-  border-radius: 18px;
-  padding: 2rem;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+  width: 100%;
+  max-width: 560px;
+  border-radius: 22px;
+  padding: 2.2rem 2.4rem;
+  box-shadow: 0 40px 80px rgba(0,0,0,0.28);
+  animation: popup 0.25s ease;
+}
+
+@keyframes popup {
+  from {
+    transform: translateY(15px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
 }
 
 .modal h2 {
   color: #1f6b3f;
-  margin-bottom: 0.6rem;
-}
-
-.modal p {
-  color: #333;
-  line-height: 1.5;
-  margin-bottom: 1rem;
-}
-
-.modal ul {
-  padding-left: 1.2rem;
+  text-align: center;
   margin-bottom: 1.4rem;
 }
 
-.modal ul li {
-  font-size: 0.9rem;
-  color: #444;
-  margin-bottom: 0.4rem;
+.modal input,
+.modal select,
+.modal textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.9rem;
+  border-radius: 14px;
+  border: 1px solid #ccc;
+  font-size: 0.95rem;
+  outline: none;
+  background: #f9fdfb;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal input:focus,
+.modal select:focus,
+.modal textarea:focus {
+  border-color: #2ea66f;
+  box-shadow: 0 0 0 3px rgba(46,166,111,0.18);
+}
+
+.modal textarea {
+  min-height: 90px;
+  resize: vertical;
 }
 
 /* =========================
-   MODAL BUTTONS
+   MODAL ACTIONS
+========================= */
+.modal button {
+  width: 100%;
+  padding: 0.85rem;
+  border-radius: 26px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  margin-top: 0.4rem;
+}
+
+.modal button:first-of-type {
+  background: linear-gradient(135deg, #2ea66f, #1f6b3f);
+  color: #ffffff;
+  box-shadow: 0 14px 28px rgba(46,166,111,0.4);
+}
+
+.modal button:first-of-type:hover {
+  box-shadow: 0 20px 36px rgba(46,166,111,0.55);
+}
+
+.modal .close-btn {
+  background: #e6e6e6;
+  color: #333;
+  margin-top: 0.6rem;
+}
+
+/* =========================
+   PRODUCT DETAILS MODAL BUTTONS
 ========================= */
 .contact-btn {
   background: #2ea66f;
   color: #ffffff;
   border: none;
-  padding: 0.6rem 1.4rem;
-  border-radius: 22px;
+  padding: 0.7rem 1.6rem;
+  border-radius: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-right: 0.6rem;
+}
+
+.edit-btn {
+  background: #ffb703;
+  color: #1a1a1a;
+  border: none;
+  padding: 0.7rem 1.6rem;
+  border-radius: 24px;
   font-weight: 600;
   cursor: pointer;
   margin-right: 0.6rem;
@@ -232,8 +312,8 @@
 .close-btn {
   background: #e0e0e0;
   border: none;
-  padding: 0.6rem 1.2rem;
-  border-radius: 22px;
+  padding: 0.7rem 1.4rem;
+  border-radius: 24px;
   cursor: pointer;
 }
 
@@ -247,5 +327,9 @@
 
   .marketplace-header h1 {
     font-size: 2.1rem;
+  }
+
+  .modal {
+    padding: 1.8rem;
   }
 }

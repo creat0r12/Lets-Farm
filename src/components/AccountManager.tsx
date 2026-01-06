@@ -116,12 +116,13 @@ const AccountManager = ({ open, onClose }: Props) => {
               </div>
 
               <div className="account-title">
-                <h2>Welcome 🌱</h2>
+                <h2>Welcome , {user.name}🌱 </h2>
                 <span className="email">{user.email}</span>
               </div>
             </div>
 
             <div className="account-info">
+              <p><strong>Name:</strong> {user.name}</p>
               <p><strong>Role:</strong> Platform User</p>
               <p><strong>Location:</strong> Maharashtra, India</p>
               <p><strong>Status:</strong> Active</p>

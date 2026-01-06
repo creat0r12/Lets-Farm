@@ -1,0 +1,80 @@
+.contact-page {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 20px;
+}
+
+.contact-page h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.faq, .feedback {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+.feedback form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.feedback input,
+.feedback textarea,
+.feedback select {
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #cbd5e1;
+}
+
+.feedback button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.feedback button:hover {
+  background: #1d4ed8;
+}
+
+/* ===== FAQ SECTION ===== */
+.faq {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 15px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-question:hover {
+  background: #e5e7eb;
+}
+
+.faq-answer {
+  padding: 0 15px 15px 15px;
+  color: #374151;
+  font-size: 14px;
+}

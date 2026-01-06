@@ -1,236 +1,219 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./LocationServices.css";
 
 import { locationDummyData } from "./data/locationDummyData";
 import { soilDataByDistrict } from "./data/soilData";
 import { weatherDummyData } from "./data/weatherDummyData";
 
-
-
+/* =========================
+   TYPES
+========================= */
+type City = keyof typeof locationDummyData;
 
 function LocationServices() {
+  /* =========================
+     DEFAULT LOCATION
+  ========================= */
+  const defaultCity: City = "Pune";
+  const defaultState =
+    locationDummyData[defaultCity].location.state;
 
-    const [useManual, setUseManual] = useState(false);
-    const [manualDistrict, setManualDistrict] = useState("");
+  /* =========================
+     STATE
+  ========================= */
+  const [useManual, setUseManual] = useState(false);
+  const [selectedState, setSelectedState] = useState<string>(defaultState);
+  const [district, setDistrict] = useState<City>(defaultCity);
 
+  /* =========================
+     DERIVED DATA
+  ========================= */
+  const states = Array.from(
+    new Set(
+      Object.values(locationDummyData).map(
+        (item) => item.location.state
+      )
+    )
+  );
 
-    const district = locationDummyData.location.district;
+  const citiesByState = (
+    Object.keys(locationDummyData) as City[]
+  ).filter(
+    (city) =>
+      locationDummyData[city].location.state === selectedState
+  );
 
-    const soilInfo =
-        soilDataByDistrict[district] || {
-            soil: "Soil data not available",
-            note: "General farming practices recommended",
-        };
+  const selectedData = locationDummyData[district];
 
+  const soilInfo =
+    soilDataByDistrict[district] || {
+      soil: "General soil",
+      note: "General farming practices recommended",
+    };
 
-    // 🔒 Save detected location for SmartCropAdvisor (MVP bridge)
+  const weatherInfo =
+    weatherDummyData[district] || {
+      temperature: 0,
+      condition: "N/A",
+      rainfall: "N/A",
+      note: "Weather data unavailable",
+    };
+
+  /* =========================
+     SYNC CITY WHEN STATE CHANGES
+  ========================= */
+  useEffect(() => {
+    if (
+      citiesByState.length > 0 &&
+      !citiesByState.includes(district)
+    ) {
+      setDistrict(citiesByState[0]);
+    }
+  }, [selectedState]);
+
+  /* =========================
+     SAVE LOCATION
+  ========================= */
+  useEffect(() => {
     localStorage.setItem(
-        "userLocation",
-        JSON.stringify({
-            state: locationDummyData.location.state,
-            district: locationDummyData.location.district
-        })
+      "userLocation",
+      JSON.stringify({
+        state: selectedData.location.state,
+        district: selectedData.location.district,
+      })
     );
+  }, [district]);
 
+  /* =========================
+     LIVE LOCATION (DEMO)
+  ========================= */
+  const handleLiveLocation = () => {
+    setUseManual(false);
+    setSelectedState("Maharashtra");
+    setDistrict("Shirpur");
+  };
 
-    return (
-        <div className="location-page">
+  /* =========================
+     UI
+  ========================= */
+  return (
+    <div className="location-page">
 
-            {/* HEADER */}
-            <section className="location-header">
-                <h1>Location-Based Farming Guidance</h1>
-                <p>
-                    Farming advice tailored to your region, climate, and conditions.
-                </p>
-            </section>
+      {/* HEADER */}
+      <section className="location-header">
+        <h1>Location-Based Farming Guidance</h1>
+        <p>State and city based smart farming insights</p>
+      </section>
 
+      {/* ACTION BUTTONS */}
+      <section className="location-actions">
 
-            {/* WHY LOCATION */}
-            <section className="location-intro">
-                <h2>Why We Ask for Your Location</h2>
+        <button
+          className="primary-btn"
+          onClick={handleLiveLocation}
+        >
+          📍 Use Live Location
+        </button>
 
-                <p>
-                    Farming is deeply connected to location. Soil type, climate,
-                    rainfall, and crops vary from place to place.
-                </p>
+        <button
+          className="secondary-btn"
+          onClick={() => setUseManual(!useManual)}
+        >
+          📍 Choose location manually
+        </button>
 
-                <p>
-                    By knowing your location, we can provide you with
-                    <strong> accurate and useful farming guidance </strong>
-                    that actually works for your area — not general advice.
-                </p>
+        {/* MANUAL LOCATION */}
+        {useManual && (
+          <section className="location-box manual-select">
+            <h2>📍 Select Your Location</h2>
 
-                <ul>
-                    <li>✔ Region-specific crop recommendations</li>
-                    <li>✔ Soil & climate based farming guidance</li>
-                    <li>✔ Organic farming suitability for your area</li>
-                    <li>✔ Seasonal and local insights</li>
-                </ul>
+            {/* STATE */}
+            <label>
+              <strong>State:</strong>
+              <select
+                value={selectedState}
+                onChange={(e) => setSelectedState(e.target.value)}
+                style={{ marginLeft: "10px" }}
+              >
+                {states.map((state) => (
+                  <option key={state} value={state}>
+                    {state}
+                  </option>
+                ))}
+              </select>
+            </label>
 
-                <p>
-                    If you don’t want to use automatic detection, you can
-                    manually select your location and continue.
-                </p>
+            <br /><br />
 
-                <p className="privacy-note">
-                    🔒 Your location data is safe with us. We use it only to provide
-                    farming guidance and never misuse or share your information.
-                </p>
-            </section>
+            {/* CITY */}
+            <label>
+              <strong>City / District:</strong>
+              <select
+                value={district}
+                onChange={(e) =>
+                  setDistrict(e.target.value as City)
+                }
+                style={{ marginLeft: "10px" }}
+              >
+                {citiesByState.map((city) => (
+                  <option key={city} value={city}>
+                    {city}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </section>
+        )}
 
+        {/* LOCATION INFO */}
+        <section className="location-box info-card">
+          <h2>Your Location</h2>
+          <p><strong>State:</strong> {selectedData.location.state}</p>
+          <p><strong>District:</strong> {selectedData.location.district}</p>
+          <p><strong>Climate:</strong> {selectedData.soil.climate}</p>
+        </section>
 
+        {/* WEATHER */}
+        <section className="location-box info-card">
+          <h2>🌦 Weather Overview</h2>
+          <p><strong>Temperature:</strong> {weatherInfo.temperature}°C</p>
+          <p><strong>Condition:</strong> {weatherInfo.condition}</p>
+          <p><strong>Rainfall:</strong> {weatherInfo.rainfall}</p>
+          <em>{weatherInfo.note}</em>
+        </section>
 
-            {/* SERVICES */}
-            <section className="location-box">
-                <h2>What You Get Here</h2>
-                <ul>
-                    <li>✔ Region-based crop guidance</li>
-                    <li>✔ Soil type and preparation basics</li>
-                    <li>✔ Live climate and rainfall awareness</li>
-                    <li>✔ Organic farming suitability insights</li>
+        {/* ACTION CARDS */}
+        <div className="action-cards-container">
 
-                </ul>
-            </section>
+          <div className="action-card">
+            🌾 Crop Guidance
+            <p>
+              <strong>Recommended:</strong>{" "}
+              {selectedData.farming_direction}
+            </p>
+          </div>
 
-            {/* ACTIONS */}
-            <section className="location-actions">
+          <div className="action-card">
+            🌱 Soil Information
+            <p><strong>Soil Type:</strong> {soilInfo.soil}</p>
+            <p><em>{soilInfo.note}</em></p>
+          </div>
 
-                {/* USE MY LOCATION BUTTON */}
-                <button className="primary-btn">
-                    📍 Location Detected (Demo)
-                </button>
-
-
-                <button
-                    className="secondary-btn"
-                    onClick={() => setUseManual(!useManual)}
-                >
-                    📍 Choose location manually (if GPS fails)
-
-                </button>
-
-
-                {useManual && (
-                    <section className="location-box manual-select">
-
-                        <h2>📍 Select Your Location</h2>
-
-                        <p>
-                            <strong>Country:</strong> India
-                        </p>
-
-                        <p>
-                            <strong>State:</strong> Maharashtra
-                        </p>
-
-                        <label>
-                            <strong>District:</strong>
-                            <select
-                                value={manualDistrict}
-                                onChange={(e) => setManualDistrict(e.target.value)}
-                                style={{ marginLeft: "10px" }}
-                            >
-                                <option value="">Select district</option>
-                                <option value="Pune">Pune</option>
-                                <option value="Nashik">Nashik</option>
-                                <option value="Nagpur">Nagpur</option>
-                                <option value="Kolhapur">Kolhapur</option>
-                                <option value="Ratnagiri">Ratnagiri</option>
-                            </select>
-                        </label>
-                    </section>
-                )}
-
-
-
-
-
-                {/* LOCATION INFO */}
-                <section className="location-box">
-                    <h2>Your Location</h2>
-                    <p>
-                        <strong>Region:</strong>{" "}
-                        {locationDummyData.location.state},{" "}
-                        {locationDummyData.location.district}
-                    </p>
-
-                    <p>
-                        <strong>Climate:</strong>{" "}
-                        {locationDummyData.soil.climate}
-                    </p>
-
-                    <p>
-                        <strong>Season:</strong> Based on current weather
-                    </p>
-
-                </section>
-
-
-
-                {/* 
-  NOTE FOR TEAM:
-  This is dummy weather data for MVP.
-  Live API (OpenWeather / IMD) can be added later.
-*/}
-
-                {/* LIVE WEATHER (DUMMY DATA) */}
-                <section className="location-box">
-                    <h2>🌦 Weather Overview</h2>
-
-                    <p>
-                        <strong>Temperature:</strong> {weatherDummyData.temperature}°C
-                    </p>
-
-                    <p>
-                        <strong>Condition:</strong> {weatherDummyData.condition}
-                    </p>
-
-                    <p>
-                        <strong>Rainfall:</strong> {weatherDummyData.rainfall}
-                    </p>
-
-                    <p>
-                        <em>{weatherDummyData.note}</em>
-                    </p>
-                </section>
-
-
-
-
-
-
-                {/* ACTION CARDS */}
-                <div className="action-card">
-                    🌾 Crop Guidance
-                    <p>Based on soil and climate</p>
-                </div>
-
-                <div className="action-card">
-                    🌱 Soil Information
-                    <p>
-                        <strong>Soil Type:</strong> {soilInfo.soil}
-                    </p>
-
-                    <p>
-                        <em>{soilInfo.note}</em>
-                    </p>
-                </div>
-
-                <div className="action-card">
-                    🌦 Climate Insights
-                    <p>Live weather awareness</p>
-                </div>
-
-                <div className="action-card">
-                    ♻️ Organic Practices
-                    <p>Suitability for your region</p>
-                </div>
-
-            </section>
-
+          <div className="action-card">
+            ♻️ Organic Pesticides
+            <ul>
+              <li>Neem oil spray</li>
+              <li>Chilli–garlic extract</li>
+              <li>Buttermilk spray</li>
+              <li>Trichoderma (bio-fungicide)</li>
+            </ul>
+          </div>
 
         </div>
-    );
+
+      </section>
+    </div>
+  );
 }
 
 export default LocationServices;

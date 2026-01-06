@@ -4,7 +4,7 @@ import "./Products.css";
 /* =========================
    TYPES
 ========================= */
-type UserRole = "buyer" | "farmer";
+type Role = "buyer" | "farmer";
 
 type Product = {
   id: number;
@@ -15,14 +15,13 @@ type Product = {
   price: string;
   location: string;
   farmerName: string;
-  buyerType: string;
   description: string;
 };
 
 /* =========================
-   DUMMY DATA (REALISTIC)
+   INITIAL PRODUCTS
 ========================= */
-const PRODUCTS: Product[] = [
+const INITIAL_PRODUCTS: Product[] = [
   {
     id: 1,
     name: "Organic Wheat",
@@ -32,9 +31,7 @@ const PRODUCTS: Product[] = [
     price: "₹2400 / Quintal",
     location: "Pune, Maharashtra",
     farmerName: "Ramesh Patil",
-    buyerType: "Wholesaler / Processor",
-    description:
-      "Organically grown wheat without chemical fertilizers. Suitable for flour mills and bulk buyers.",
+    description: "High quality organic wheat grown without chemicals."
   },
   {
     id: 2,
@@ -45,185 +42,277 @@ const PRODUCTS: Product[] = [
     price: "₹18 / Kg",
     location: "Nashik, Maharashtra",
     farmerName: "Sunita Deshmukh",
-    buyerType: "Retailers / Wholesalers",
-    description:
-      "Seasonal fresh tomatoes grown using natural farming methods.",
-  },
-  {
-    id: 3,
-    name: "Tur Dal",
-    category: "Pulses",
-    farmingType: "Organic",
-    quantity: "200 Quintals",
-    price: "₹8200 / Quintal",
-    location: "Solapur, Maharashtra",
-    farmerName: "Mahadev Jadhav",
-    buyerType: "Exporters / Processors",
-    description:
-      "High-quality organic tur dal with good grain size and yield.",
-  },
-  {
-    id: 4,
-    name: "Groundnut",
-    category: "Oil Seeds",
-    farmingType: "Chemical-Free",
-    quantity: "350 Quintals",
-    price: "₹6000 / Quintal",
-    location: "Ahmednagar, Maharashtra",
-    farmerName: "Anil Pawar",
-    buyerType: "Oil Mills",
-    description:
-      "Groundnut cultivated without chemical pesticides, ideal for oil extraction.",
-  },
+    description: "Naturally grown seasonal tomatoes."
+  }
 ];
 
-/* =========================
-   MAIN COMPONENT
-========================= */
 function Products() {
-  /* =========================
-     STATE
-  ========================= */
-  const [role, setRole] = useState<UserRole>("buyer");
-  const [categoryFilter, setCategoryFilter] = useState<string>("All");
-  const [farmingFilter, setFarmingFilter] = useState<string>("All");
-  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [role, setRole] = useState<Role>("buyer");
+  const [products, setProducts] = useState<Product[]>(INITIAL_PRODUCTS);
+  const [cart, setCart] = useState<Product[]>([]);
+  const [selected, setSelected] = useState<Product | null>(null);
+
+  /* FILTER STATES */
+  const [categoryFilter, setCategoryFilter] = useState("All");
+  const [farmingFilter, setFarmingFilter] = useState("All");
+
+  /* PRODUCT MODAL */
+  const [showProductModal, setShowProductModal] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [editingId, setEditingId] = useState<number | null>(null);
+
+  const [form, setForm] = useState<Omit<Product, "id">>({
+    name: "",
+    category: "Grains",
+    farmingType: "Organic",
+    quantity: "",
+    price: "",
+    location: "",
+    farmerName: "",
+    description: ""
+  });
 
   /* =========================
      FILTER LOGIC
   ========================= */
-  const filteredProducts = PRODUCTS.filter((product) => {
-    const categoryMatch =
-      categoryFilter === "All" || product.category === categoryFilter;
-    const farmingMatch =
-      farmingFilter === "All" || product.farmingType === farmingFilter;
-
-    return categoryMatch && farmingMatch;
+  const filteredProducts = products.filter((p) => {
+    const categoryOK =
+      categoryFilter === "All" || p.category === categoryFilter;
+    const farmingOK =
+      farmingFilter === "All" || p.farmingType === farmingFilter;
+    return categoryOK && farmingOK;
   });
+
+  /* =========================
+     ADD TO CART
+  ========================= */
+  const addToCart = (product: Product) => {
+    if (cart.some((c) => c.id === product.id)) {
+      alert("Already in cart");
+      return;
+    }
+    setCart([...cart, product]);
+  };
+
+  /* =========================
+     SAVE PRODUCT
+  ========================= */
+  const saveProduct = () => {
+    if (!form.name || !form.price) {
+      alert("Fill required fields");
+      return;
+    }
+
+    if (editMode && editingId !== null) {
+      setProducts((prev) =>
+        prev.map((p) =>
+          p.id === editingId ? { ...form, id: editingId } : p
+        )
+      );
+    } else {
+      setProducts([...products, { ...form, id: Date.now() }]);
+    }
+
+    setShowProductModal(false);
+    setEditMode(false);
+    setEditingId(null);
+    setForm({
+      name: "",
+      category: "Grains",
+      farmingType: "Organic",
+      quantity: "",
+      price: "",
+      location: "",
+      farmerName: "",
+      description: ""
+    });
+  };
+
+  /* =========================
+     EDIT PRODUCT
+  ========================= */
+  const editProduct = (product: Product) => {
+    setRole("farmer");
+    setEditMode(true);
+    setEditingId(product.id);
+    setSelected(null);
+    setShowProductModal(true);
+
+    setForm({
+      name: product.name,
+      category: product.category,
+      farmingType: product.farmingType,
+      quantity: product.quantity,
+      price: product.price,
+      location: product.location,
+      farmerName: product.farmerName,
+      description: product.description
+    });
+  };
 
   return (
     <section className="marketplace-page">
-
-      {/* =========================
-          PAGE HEADER
-      ========================= */}
+      {/* HEADER */}
       <header className="marketplace-header">
         <h1>Farm Products Marketplace</h1>
-        <p>
-          A farmer-first marketplace connecting producers directly with
-          wholesalers and bulk buyers.
-        </p>
+        <p>Connect farmers directly with buyers</p>
       </header>
 
-      {/* =========================
-          ROLE SELECTION
-      ========================= */}
+      {/* ROLE SWITCH */}
       <div className="role-switch">
         <button
           className={role === "buyer" ? "active" : ""}
           onClick={() => setRole("buyer")}
         >
-          I am a Buyer
+          Buyer
         </button>
         <button
           className={role === "farmer" ? "active" : ""}
           onClick={() => setRole("farmer")}
         >
-          I am a Farmer
+          Farmer
         </button>
       </div>
 
-      {/* =========================
-          FILTER BAR (BUYER ONLY)
-      ========================= */}
+      {/* BUYER FILTERS */}
       {role === "buyer" && (
         <div className="filter-bar">
           <select onChange={(e) => setCategoryFilter(e.target.value)}>
             <option value="All">All Categories</option>
-            <option value="Grains">Grains</option>
-            <option value="Vegetables">Vegetables</option>
-            <option value="Pulses">Pulses</option>
-            <option value="Oil Seeds">Oil Seeds</option>
+            <option>Grains</option>
+            <option>Vegetables</option>
+            <option>Pulses</option>
+            <option>Oil Seeds</option>
           </select>
 
           <select onChange={(e) => setFarmingFilter(e.target.value)}>
             <option value="All">All Farming Types</option>
-            <option value="Organic">Organic</option>
-            <option value="Natural">Natural</option>
-            <option value="Chemical-Free">Chemical-Free</option>
+            <option>Organic</option>
+            <option>Natural</option>
+            <option>Chemical-Free</option>
           </select>
         </div>
       )}
 
-      {/* =========================
-          FARMER INFO PANEL
-      ========================= */}
+      {/* FARMER ADD BUTTON */}
       {role === "farmer" && (
-        <div className="farmer-panel">
-          <h2>Farmer Dashboard (Demo)</h2>
-          <p>
-            Farmers will be able to list products, manage quantities,
-            and connect directly with buyers.
-          </p>
-          <button disabled>Add New Product (Coming Soon)</button>
+        <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+          <button
+            className="add-product-btn"
+            onClick={() => setShowProductModal(true)}
+          >
+            ➕ Add Product
+          </button>
         </div>
       )}
 
-      {/* =========================
-          PRODUCT LIST
-      ========================= */}
+      {/* PRODUCT LIST */}
       <div className="product-list">
-        {filteredProducts.map((product) => (
-          <div
-            key={product.id}
-            className="product-card"
-            onClick={() => setSelectedProduct(product)}
-          >
-            <h3>{product.name}</h3>
-            <p className="category">{product.category}</p>
-
-            <p><strong>Farming:</strong> {product.farmingType}</p>
-            <p><strong>Quantity:</strong> {product.quantity}</p>
-            <p><strong>Price:</strong> {product.price}</p>
-
+        {filteredProducts.map((p) => (
+          <div key={p.id} className="product-card" onClick={() => setSelected(p)}>
+            <h3>{p.name}</h3>
+            <p className="category">{p.category}</p>
+            <p><strong>Farming:</strong> {p.farmingType}</p>
+            <p><strong>Price:</strong> {p.price}</p>
             <span className="view-details">View Details</span>
           </div>
         ))}
       </div>
 
-      {/* =========================
-          PRODUCT DETAILS MODAL
-      ========================= */}
-      {selectedProduct && (
-        <div className="modal-overlay" onClick={() => setSelectedProduct(null)}>
-          <div
-            className="modal"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2>{selectedProduct.name}</h2>
-            <p>{selectedProduct.description}</p>
+      {/* CART */}
+      {role === "buyer" && cart.length > 0 && (
+        <div className="farmer-panel">
+          <h2>Your Cart</h2>
+          {cart.map((c) => (
+            <p key={c.id}>🛒 {c.name} — {c.price}</p>
+          ))}
+        </div>
+      )}
+
+      {/* PRODUCT DETAILS MODAL */}
+      {selected && (
+        <div className="modal-overlay" onClick={() => setSelected(null)}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <h2>{selected.name}</h2>
+            <p>{selected.description}</p>
 
             <ul>
-              <li><strong>Farmer:</strong> {selectedProduct.farmerName}</li>
-              <li><strong>Location:</strong> {selectedProduct.location}</li>
-              <li><strong>Buyer Type:</strong> {selectedProduct.buyerType}</li>
-              <li><strong>Quantity:</strong> {selectedProduct.quantity}</li>
-              <li><strong>Price:</strong> {selectedProduct.price}</li>
+              <li><strong>Category:</strong> {selected.category}</li>
+              <li><strong>Farming Type:</strong> {selected.farmingType}</li>
+              <li><strong>Quantity:</strong> {selected.quantity}</li>
+              <li><strong>Price:</strong> {selected.price}</li>
+              <li><strong>Location:</strong> {selected.location}</li>
+              <li><strong>Farmer:</strong> {selected.farmerName}</li>
             </ul>
 
             {role === "buyer" && (
-              <button className="contact-btn">
-                Request Contact
+              <button className="contact-btn" onClick={() => addToCart(selected)}>
+                Add to Cart
               </button>
             )}
 
-            <button className="close-btn" onClick={() => setSelectedProduct(null)}>
+            {role === "farmer" && (
+              <button className="edit-btn" onClick={() => editProduct(selected)}>
+                Edit Product
+              </button>
+            )}
+
+            <button className="close-btn" onClick={() => setSelected(null)}>
               Close
             </button>
           </div>
         </div>
       )}
 
+      {/* ADD / EDIT PRODUCT MODAL */}
+      {showProductModal && (
+        <div className="modal-overlay" onClick={() => setShowProductModal(false)}>
+          <div className="modal" onClick={(e) => e.stopPropagation()}>
+            <h2>{editMode ? "Edit Product" : "Add Product"}</h2>
+
+            <input placeholder="Product Name" value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })} />
+
+            <select value={form.category}
+              onChange={(e) => setForm({ ...form, category: e.target.value })}>
+              <option>Grains</option>
+              <option>Vegetables</option>
+              <option>Pulses</option>
+              <option>Oil Seeds</option>
+            </select>
+
+            <select value={form.farmingType}
+              onChange={(e) => setForm({ ...form, farmingType: e.target.value as any })}>
+              <option>Organic</option>
+              <option>Natural</option>
+              <option>Chemical-Free</option>
+            </select>
+
+            <input placeholder="Quantity" value={form.quantity}
+              onChange={(e) => setForm({ ...form, quantity: e.target.value })} />
+
+            <input placeholder="Price" value={form.price}
+              onChange={(e) => setForm({ ...form, price: e.target.value })} />
+
+            <input placeholder="Location" value={form.location}
+              onChange={(e) => setForm({ ...form, location: e.target.value })} />
+
+            <input placeholder="Farmer Name" value={form.farmerName}
+              onChange={(e) => setForm({ ...form, farmerName: e.target.value })} />
+
+            <textarea placeholder="Description" value={form.description}
+              onChange={(e) => setForm({ ...form, description: e.target.value })} />
+
+            <button onClick={saveProduct}>
+              {editMode ? "Update Product" : "Add Product"}
+            </button>
+
+            <button className="close-btn" onClick={() => setShowProductModal(false)}>
+              Cancel
+            </button>
+          </div>
+        </div>
+      )}
     </section>
   );
 }

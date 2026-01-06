@@ -1,10 +1,9 @@
-
-
-import Chatbot from "./components/Chatbot/Chatbot";
-
-
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
+/* =======================
+   COMPONENT IMPORTS
+======================= */
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import Challenges from "./components/Challenges";
@@ -12,63 +11,39 @@ import FarmingMethods from "./components/FarmingMethods";
 import HomeSlider from "./components/HomeSlider";
 import Footer from "./components/Footer";
 
-import { useState } from "react";
-import AccountPanel from "./components/AccountManager";
-import LocationServices from "./components/LocationServices";
-
-
-import SmartCropAdvisor from "./components/SmartCropAdvisor";
-
-
-
-import HowWeWork from "./components/HowWeWork";
-
-
-
-import KnowFarming from "./components/KnowFarming";
-
-import Vision from "./components/Vision";
-
-import Products from "./components/Products";
+import Chatbot from "./components/Chatbot/Chatbot";
 import AccountManager from "./components/AccountManager";
+import LocationServices from "./components/LocationServices";
+import SmartCropAdvisor from "./components/SmartCropAdvisor";
+import HowWeWork from "./components/HowWeWork";
+import KnowFarming from "./components/KnowFarming";
+import Vision from "./components/Vision";
+import Products from "./components/Products";
 
+/* =======================
+   NEW PAGE IMPORT
+======================= */
+import Contact from "./components/Contact";
 
 function App() {
-
-const [chatOpen, setChatOpen] = useState(false);
-
-
-
+  const [chatOpen, setChatOpen] = useState(false);
   const [accountOpen, setAccountOpen] = useState(false);
 
   return (
     <>
-      {/* FIXED WALLPAPER */}
-      {/* <div className="fixed-wallpaper" /> */}
-
       {/* NAVBAR */}
       <Navbar
-  onAccountClick={() => setAccountOpen(true)}
-  onChatClick={() => setChatOpen(true)}
-/>
+        onAccountClick={() => setAccountOpen(true)}
+        onChatClick={() => setChatOpen(true)}
+      />
 
-
-
-
-
-
-
-      {/* PAGE ROUTES */}
+      {/* ROUTES */}
       <Routes>
-
-
-
-        {/* HOME PAGE */}
+        {/* HOME */}
         <Route
           path="/"
           element={
             <>
-              {/* HOME WALLPAPER ONLY */}
               <div className="fixed-wallpaper" />
               <Hero />
               <HomeSlider />
@@ -78,38 +53,31 @@ const [chatOpen, setChatOpen] = useState(false);
           }
         />
 
+        {/* OTHER PAGES */}
         <Route path="/HowWeWork" element={<HowWeWork />} />
-
         <Route path="/location" element={<LocationServices />} />
-
-        {/* SMART CROP ADVISOR */}
         <Route path="/smart-advisor" element={<SmartCropAdvisor />} />
-
         <Route path="/know-farming" element={<KnowFarming />} />
-        {/* for vision */}
         <Route path="/vision" element={<Vision />} />
-
         <Route path="/products" element={<Products />} />
 
-
+        {/* ✅ CONTACT US PAGE */}
+        <Route path="/contact" element={<Contact />} />
       </Routes>
 
+      {/* CHATBOT */}
+      <Chatbot open={chatOpen} onClose={() => setChatOpen(false)} />
 
-<Chatbot
-  open={chatOpen}
-  onClose={() => setChatOpen(false)}
-/>
-
-
-      {/* ✅ GLOBAL FOOTER (NOW ON ALL PAGES) */}
+      {/* FOOTER (GLOBAL) */}
       <Footer />
-      {/* account pannel */}
+
+      {/* ACCOUNT PANEL */}
       <AccountManager
         open={accountOpen}
         onClose={() => setAccountOpen(false)}
       />
-
     </>
   );
 }
+
 export default App;

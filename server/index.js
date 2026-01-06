@@ -13,6 +13,11 @@ require("./db");
 ========================= */
 const authRoutes = require("./routes/auth.routes");
 const chatRoutes = require("./routes/chat.routes");
+const productRoutes = require("./routes/product.routes");
+const cartRoutes = require("./routes/cart.routes");
+const feedbackRoutes = require("./routes/feedback.routes");
+
+
 
 const app = express();
 
@@ -46,6 +51,12 @@ app.use("/api/auth", authRoutes);
    CHATBOT ROUTE
 ========================= */
 app.use("/api/chat", chatRoutes);
+
+/* =========================
+   Feedback ROUTE
+========================= */
+
+app.use("/api/feedback", feedbackRoutes);
 
 /* =========================
    SMART CROP ADVISOR (ENHANCED)
@@ -211,6 +222,14 @@ app.use((err, req, res, next) => {
     message: "Internal server error"
   });
 });
+
+
+
+
+app.use("/api/products", productRoutes);
+app.use("/api/cart", cartRoutes);
+
+
 
 /* =========================
    START SERVER

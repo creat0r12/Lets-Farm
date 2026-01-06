@@ -22,17 +22,77 @@
   margin-bottom: 2.5rem;
 }
 
+/* ===== TOPIC (ACCORDION) ===== */
 .topic {
   padding: 1.2rem 0;
   border-bottom: 1px solid #e5e7eb;
 }
 
-.topic h2 {
+.topic:last-of-type {
+  border-bottom: none;
+}
+
+/* clickable question */
+.topic-title {
+  width: 100%;
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+
+  padding: 0;
   font-size: 1.3rem;
   color: #14532d;
   margin: 0;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
+/* REMOVE border / outline on hover & click */
+.topic-title:hover,
+.topic-title:focus,
+.topic-title:active {
+  outline: none;
+  border: none;
+  box-shadow: none;
+}
+
+/* remove browser focus ring */
+.topic-title:focus-visible {
+  outline: none;
+}
+
+/* + / − icon */
+.topic-title span {
+  font-size: 1.5rem;
+  color: #16a34a;
+  line-height: 1;
+}
+
+/* hover color only (no border) */
+.topic-title:hover {
+  color: #15803d;
+}
+
+/* answer text */
+.topic-content {
+  margin-top: 0.8rem;
+  padding-right: 0.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #374151;
+}
+
+/* active spacing */
+.topic.active {
+  padding-bottom: 1.5rem;
+}
+
+/* note */
 .note {
   margin-top: 2.5rem;
   font-size: 0.95rem;
